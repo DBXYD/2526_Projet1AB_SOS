@@ -1,1 +1,2 @@
-Type de Tag RFID MFRC 522
+Type de Tag RFID MFRC 522\
+13,56 MHz

@@ -1,2 +1,7 @@
 Type de Tag RFID MFRC 522\
 13,56 MHz
+
+D'après [SunFounder](https://docs.sunfounder.com/projects/elite-explorer-kit/fr/latest/components/component_mfrc522.html) :
+> Le MFRC522 est un type de puce de lecture et d’écriture de cartes intégrée. Il est couramment utilisé pour les communications radio à 13,56 MHz. Lancé par la société NXP, c’est une puce de carte sans contact à faible tension, faible coût et petite taille, un excellent choix pour les instruments intelligents et les appareils portables.
+
+> Le MF RC522 utilise un concept avancé de modulation et de démodulation, pleinement présent dans tous les types de méthodes et protocoles de communication sans contact passifs à 13,56 MHz. De plus, il prend en charge l’algorithme de cryptage rapide CRYPTO1 pour vérifier les produits MIFARE. Le MFRC522 prend également en charge la communication sans contact haute vitesse de la série MIFARE, avec un taux de transmission de données bidirectionnel allant jusqu’à 424 kbit/s. En tant que nouveau membre de la série de lecteurs de cartes hautement intégrés à 13,56 MHz, le MF RC522 est très similaire aux MF RC500 et MF RC530 existants, mais présente également de grandes différences. Il communique avec la machine hôte via un mode série nécessitant moins de câblage. Vous pouvez choisir entre les modes SPI, I2C et UART série (similaire à RS232), ce qui aide à réduire les connexions, à économiser de l’espace sur la carte PCB (taille plus petite) et à réduire les coûts.

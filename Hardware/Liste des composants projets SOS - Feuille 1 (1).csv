@@ -1,0 +1,11 @@
+composants,quantités ,description,Valeurs
+STM32L476RGTX,1,Microcontroleur,
+Quartz,1,,4 Mhz
+Résistance Rv,1,,3.3 kOhm
+bobine,1,,1 mH
+Condensateur ,3,,100 nF
+Port USB,1,,
+HRTC110,1,Lecteur RFID,
+C quartz,2,,22 pF
+Condensateur accord,1,,"1,62 nF"
+Condensateur,1,,10 uF

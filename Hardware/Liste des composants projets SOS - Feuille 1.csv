@@ -1,8 +1,0 @@
-composants,quantités ,description,
-PN532 RFID/NFC Module,1,Module for RFID/NFC reading and writing,peut-etre STM32
-ESP32-C3 Super Mini,1,,
-Résistances,,,
-Board,,,
-Jumper Wires ,,,
-Port USB,,,
-HTRC110,,Lecteur RFID,

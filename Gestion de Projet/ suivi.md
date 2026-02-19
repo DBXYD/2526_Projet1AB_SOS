@@ -12,11 +12,12 @@ Début de l'achat des composants\
 Fin du choix de la liste des composants\
 Début de la réalisation du schéma
 
-# Séance 3: jeudi 19/02/26
+## Séance 3: jeudi 19/02/26
 Finition du kicad\
-Achat des composants\
+Liste pour achat des composants\
 Début des attributions des pins\
 Début des création des empreintes
 
-
-
+# Finitions kicad:
+Vbat\
+Connecteur pour debug (20 pins?)\

@@ -18,3 +18,10 @@ Attributions des pins\
 Création des empreintes\
 Finition du schéma kicad\
 Routage board
+
+## Séance 3: jeudi 19/02/26
+Révision et vérification liste d'achat des composants\
+Organisation de la documentation pour faciliter les références futures\
+Travail sur l'architecture software:
+- Identification pins à configurer
+- Identification fonctions à coder

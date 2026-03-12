@@ -7539,6 +7539,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 40.64 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "6"
 			(uuid "b018080c-23ab-48fe-954b-eb7874cbf71f")
 		)
@@ -7821,6 +7830,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 227.33 78.74 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "04e05165-1832-4b25-a84e-54e05611f1f3")
 		)
@@ -7882,6 +7900,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 167.64 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 167.64 38.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7951,6 +7978,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 180.34 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 180.34 147.32 0)
 			(effects
 				(font
@@ -8096,6 +8132,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 123.19 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "e9124e8b-8d5c-4a60-91d4-734c8650c3a3")
 		)
@@ -8231,6 +8276,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 57.15 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "17"
 			(uuid "352c58a6-895f-44da-a5b8-92465f1411b5")
 		)
@@ -8346,6 +8400,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 264.16 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 264.16 60.96 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8481,6 +8544,15 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 38.1 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 38.1 119.38 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8756,6 +8828,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 46.99 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "67714333-323f-40b6-a000-3f394742aecd")
 		)
@@ -8822,6 +8903,15 @@
 			)
 		)
 		(property "Description" "HITAG RF Reader Device, SOIC-14"
+			(at 245.11 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 245.11 68.58 0)
 			(effects
 				(font
@@ -9000,6 +9090,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 111.76 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e472d71e-3962-4ec4-bdbe-4eb380fc3d1a")
 		)
@@ -9063,6 +9162,15 @@
 		)
 		(property "Description" "Two pin crystal, small symbol"
 			(at 116.84 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 116.84 120.65 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9138,6 +9246,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 125.73 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "c7465bda-9a08-47d6-9b80-f44022a710e3")
 		)
@@ -9199,6 +9316,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 240.03 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 240.03 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9470,6 +9596,15 @@
 			)
 		)
 		(property "Description" "STMicroelectronics Arm Cortex-M4 MCU, 1024KB flash, 128KB RAM, 80 MHz, 1.71-3.6V, 51 GPIO, LQFP64"
+			(at 147.32 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 147.32 91.44 0)
 			(effects
 				(font
@@ -9800,6 +9935,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 127 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "1519fa72-64ea-48f1-ad03-a42be20b241f")
 		)
@@ -9862,6 +10006,15 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
+			(at 119.38 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 119.38 110.49 0)
 			(effects
 				(font
@@ -10006,6 +10159,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 186.69 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e472d71e-3962-4ec4-bdbe-4eb380fc3d1b")
 		)
@@ -10133,6 +10295,15 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 38.1 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 38.1 121.92 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10334,6 +10505,15 @@
 		)
 		(property "Description" "Resistor, small symbol"
 			(at 38.1 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 38.1 111.76 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10544,6 +10724,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 72.39 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3e06d606-b910-4fad-883b-9a93bd99b431")
 		)
@@ -10612,6 +10801,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 220.98 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "02d93d7a-7343-4978-98ba-85b0f5867e8b")
 		)
@@ -10632,7 +10830,7 @@
 		(at 242.57 133.35 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -10675,6 +10873,15 @@
 		)
 		(property "Description" "Mounting Hole with connection"
 			(at 242.57 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 242.57 133.35 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10814,6 +11021,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 264.16 55.88 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "bd0ff9d9-d6d7-484d-8e3b-958aeec7510a")
 		)
@@ -10884,6 +11100,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 116.84 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e472d71e-3962-4ec4-bdbe-4eb380fc3d1c")
 		)
@@ -10945,6 +11170,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 262.89 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 262.89 81.28 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11039,7 +11273,7 @@
 		(at 242.57 139.7 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -11082,6 +11316,15 @@
 		)
 		(property "Description" "Mounting Hole with connection"
 			(at 242.57 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 242.57 139.7 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11148,6 +11391,15 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
+			(at 49.53 176.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 49.53 176.53 0)
 			(effects
 				(font
@@ -11508,7 +11760,7 @@
 		(at 242.57 146.05 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -11551,6 +11803,15 @@
 		)
 		(property "Description" "Mounting Hole with connection"
 			(at 242.57 146.05 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 242.57 146.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11617,6 +11878,15 @@
 			)
 		)
 		(property "Description" "150mA, Tiny CMOS LDO With Shutdown, Fixed Voltage, SOT-23-5"
+			(at 62.23 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 62.23 44.45 0)
 			(effects
 				(font
@@ -11695,6 +11965,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 220.98 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 220.98 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11971,6 +12250,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 125.73 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e472d71e-3962-4ec4-bdbe-4eb380fc3d1d")
 		)
@@ -12098,6 +12386,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 240.03 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 240.03 44.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12306,6 +12603,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 262.89 76.2 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "e8d0d3c5-66a3-428f-af01-781246c15cbf")
 		)
@@ -12435,6 +12741,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 110.49 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 110.49 120.65 0)
 			(effects
 				(font
@@ -12596,7 +12911,7 @@
 		(at 242.57 127 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
@@ -12639,6 +12954,15 @@
 		)
 		(property "Description" "Mounting Hole with connection"
 			(at 242.57 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 242.57 127 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12779,6 +13103,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 133.35 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "5b76f136-316a-408b-a889-eb6b5390ac08")
 		)
@@ -12840,6 +13173,15 @@
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
 			(at 167.64 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
+			(at 167.64 43.18 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12984,6 +13326,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 120.65 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "258a5398-eb35-4167-9de3-dd60323fc588")
 		)
@@ -13046,6 +13397,15 @@
 			)
 		)
 		(property "Description" "Resistor, small symbol"
+			(at 266.7 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 266.7 64.77 0)
 			(effects
 				(font
@@ -13124,6 +13484,15 @@
 				(hide yes)
 			)
 		)
+		(property "Items" ""
+			(at 180.34 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "94ca166d-88c5-4100-970a-5a2eadd26837")
 		)
@@ -13186,6 +13555,15 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
+			(at 33.02 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Items" ""
 			(at 33.02 54.61 0)
 			(effects
 				(font

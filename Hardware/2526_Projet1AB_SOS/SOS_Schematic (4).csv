@@ -7,7 +7,7 @@
 "C12","1","10n","","","","Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder","~"
 "C13,C17,C18,C20","4","1u","","","","Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder","~"
 "C16,C19","2","20p","","","","Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder","~"
-"H1,H2,H3,H4","4","MountingHole_Pad","","Exclure de la Liste du Matériel","","MountingHole:MountingHole_3.2mm_M3_DIN965_Pad","~"
+"H1,H2,H3,H4","4","MountingHole_Pad","","","","MountingHole:MountingHole_3.2mm_M3_DIN965_Pad","~"
 "J1","1","USB_B_Mini","","","","Connector_USB:USB_Mini-B_Tensility_54-00023_Vertical","~"
 "J2","1","Conn_02x10_Odd_Even","","","","Connector_PinHeader_1.27mm:PinHeader_2x10_P1.27mm_Vertical_SMD","~"
 "J3","1","Conn_01x02","","","","Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical","~"

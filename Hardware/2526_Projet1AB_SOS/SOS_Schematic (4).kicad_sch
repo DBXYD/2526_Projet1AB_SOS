@@ -5202,6 +5202,18 @@
 		(uuid 733073ee-6a35-4bbf-8c05-20cd2dcced52)
 	)
 	(rectangle
+		(start 180.34 60.96)
+		(end 283.21 130.81)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(fill
+			(type none)
+		)
+		(uuid 8460124c-8d2c-4e68-bc3d-94bde8ebf45e)
+	)
+	(rectangle
 		(start 13.97 124.46)
 		(end 80.01 194.31)
 		(stroke
@@ -5246,6 +5258,16 @@
 			)
 		)
 		(uuid "070f9935-c031-4747-9c6a-5474b85821c3")
+	)
+	(text "Buttons&LEDs"
+		(exclude_from_sim no)
+		(at 191.516 64.262 0)
+		(effects
+			(font
+				(size 1.905 1.905)
+			)
+		)
+		(uuid "0a05e3b1-141b-477a-8b9e-0578ae072390")
 	)
 	(text "1.7V @ 1mA"
 		(exclude_from_sim no)
@@ -9759,7 +9781,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2b61ac1b-2558-4800-a3d7-eaad0f39b794")
-		(property "Reference" "TP8"
+		(property "Reference" "TP_IRQ1"
 			(at 232.156 22.86 0)
 			(effects
 				(font
@@ -9768,13 +9790,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_IRQ"
+		(property "Value" "TestPoint"
 			(at 232.41 32.766 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -9810,7 +9833,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP8")
+					(reference "TP_IRQ1")
 					(unit 1)
 				)
 			)
@@ -10276,7 +10299,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "37bea7da-4354-4bdc-a95b-a45f9942b09f")
-		(property "Reference" "TP9"
+		(property "Reference" "TP_RST1"
 			(at 237.236 22.86 0)
 			(effects
 				(font
@@ -10285,13 +10308,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_RST"
+		(property "Value" "TestPoint"
 			(at 237.49 33.02 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -10327,7 +10351,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP9")
+					(reference "TP_RST1")
 					(unit 1)
 				)
 			)
@@ -10556,7 +10580,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4821954c-1a07-49cf-a476-a7208ba8af12")
-		(property "Reference" "TP6"
+		(property "Reference" "TP_MOSI1"
 			(at 221.996 22.86 0)
 			(effects
 				(font
@@ -10565,13 +10589,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_MOSI"
+		(property "Value" "TestPoint"
 			(at 222.504 33.274 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -10607,7 +10632,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP6")
+					(reference "TP_MOSI1")
 					(unit 1)
 				)
 			)
@@ -13441,7 +13466,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_3V3"
+		(property "Value" "TestPoint"
 			(at 59.69 27.1779 0)
 			(effects
 				(font
@@ -13499,7 +13524,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "abb6639a-c392-41f5-9aa5-e48c5a2cc1e5")
-		(property "Reference" "TP5"
+		(property "Reference" "TP_SCK1"
 			(at 216.916 22.86 0)
 			(effects
 				(font
@@ -13508,13 +13533,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_SCK"
+		(property "Value" "TestPoint"
 			(at 217.17 32.512 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -13550,7 +13576,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP5")
+					(reference "TP_SCK1")
 					(unit 1)
 				)
 			)
@@ -14144,7 +14170,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bf7c0c64-0f8f-48a0-8be2-35f625182414")
-		(property "Reference" "TP_NRST"
+		(property "Reference" "TP_NRST1"
 			(at 64.77 75.4379 0)
 			(effects
 				(font
@@ -14153,7 +14179,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_NRST"
+		(property "Value" "TestPoint"
 			(at 64.77 77.9779 0)
 			(effects
 				(font
@@ -14196,7 +14222,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP_NRST")
+					(reference "TP_NRST1")
 					(unit 1)
 				)
 			)
@@ -14635,7 +14661,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d33095c5-635e-4f35-8fca-e67c6a693c4b")
-		(property "Reference" "TP4"
+		(property "Reference" "TP_NSS1"
 			(at 211.836 22.86 0)
 			(effects
 				(font
@@ -14644,13 +14670,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_NSS"
+		(property "Value" "TestPoint"
 			(at 212.09 31.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -14686,7 +14713,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP4")
+					(reference "TP_NSS1")
 					(unit 1)
 				)
 			)
@@ -14701,7 +14728,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d6d21b09-cc7e-4260-b2d7-d138664676e6")
-		(property "Reference" "TP7"
+		(property "Reference" "TP_MISO1"
 			(at 227.076 22.86 0)
 			(effects
 				(font
@@ -14710,13 +14737,14 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_MISO"
+		(property "Value" "TestPoint"
 			(at 227.584 33.782 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" "TestPoint:TestPoint_Pad_D1.0mm"
@@ -14752,7 +14780,7 @@
 		(instances
 			(project "SOS_Schematic (4)"
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP7")
+					(reference "TP_MISO1")
 					(unit 1)
 				)
 			)
@@ -15117,7 +15145,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e4bef2ce-174a-4552-aa92-050ccad9ebd8")
-		(property "Reference" "TP_5V"
+		(property "Reference" "TP_5V1"
 			(at 17.018 24.13 90)
 			(effects
 				(font
@@ -15125,7 +15153,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_5V"
+		(property "Value" "TestPoint"
 			(at 17.018 26.67 90)
 			(effects
 				(font
@@ -15167,7 +15195,7 @@
 		(instances
 			(project ""
 				(path "/9d394b3d-e5c0-4919-a596-896a666dc5cf"
-					(reference "TP_5V")
+					(reference "TP_5V1")
 					(unit 1)
 				)
 			)

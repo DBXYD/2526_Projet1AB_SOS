@@ -3804,7 +3804,7 @@
 		(at 69.9 93.4)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP5"
+		(property "Reference" "TP_SCK1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "605e59fe-4639-4f31-b821-5cd2995fa7c3")
@@ -3815,7 +3815,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_SCK"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "5ddf2924-6b47-4e06-bb59-49b2023247a9")
@@ -4213,7 +4213,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_5V"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "3a4836ec-e4c4-4f4e-88fc-8748b9968aee")
@@ -4728,7 +4728,7 @@
 		(at 80.8 94.7)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP9"
+		(property "Reference" "TP_RST1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "fb5f47bf-d092-49aa-857c-0e622e7dbb5d")
@@ -4739,7 +4739,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_RST"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "228c69d4-1fb6-495f-8060-d768b3d26438")
@@ -5113,7 +5113,7 @@
 		(at 67.5 93.3)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP4"
+		(property "Reference" "TP_NSS1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "6544434b-9947-4be9-8f92-7082b9ea4f8c")
@@ -5124,7 +5124,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_NSS"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "01d22ba1-ab2d-4f47-954c-c15e61e4aa51")
@@ -6201,7 +6201,7 @@
 		(at 74.3 93.6)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP7"
+		(property "Reference" "TP_MISO1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "66842c4b-7551-4687-afb5-3ec7d4242e25")
@@ -6212,7 +6212,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_MISO"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "9a469f2a-f081-46a5-87cc-4e2e9e6e181d")
@@ -8586,7 +8586,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_NRST"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "7602361a-5223-4d17-8946-485c8b108655")
@@ -8689,7 +8689,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_3V3"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "2db69e65-16b3-4e41-99f8-af7c05f85f3d")
@@ -11126,7 +11126,7 @@
 		(at 72 93.5)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP6"
+		(property "Reference" "TP_MOSI1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "1cd669e2-3073-4f54-9fbc-754abf8a9ee1")
@@ -11137,7 +11137,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_MOSI"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "a8aab959-ff56-464e-a4b5-427eeb3d37e6")
@@ -11742,7 +11742,7 @@
 		(at 76.8 93.5)
 		(descr "SMD pad as test Point, diameter 1.0mm")
 		(tags "test point SMD pad")
-		(property "Reference" "TP8"
+		(property "Reference" "TP_IRQ1"
 			(at 0 -1.448 0)
 			(layer "F.SilkS")
 			(uuid "dd4f9360-6438-4578-aeb2-c631b587873f")
@@ -11753,7 +11753,7 @@
 				)
 			)
 		)
-		(property "Value" "TP_IRQ"
+		(property "Value" "TestPoint"
 			(at 0 1.55 0)
 			(layer "F.Fab")
 			(uuid "db8ac636-eeb5-4466-81fc-1ad61249922e")

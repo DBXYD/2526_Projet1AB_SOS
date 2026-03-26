@@ -19,9 +19,14 @@ Création des empreintes\
 Finition du schéma kicad\
 Routage board
 
-## Séance 3: jeudi 19/02/26
+## Séance 4: jeudi 12/03/26
 Révision et vérification liste d'achat des composants\
 Organisation de la documentation pour faciliter les références futures\
 Travail sur l'architecture software:
 - Identification pins à configurer
 - Identification fonctions à coder
+
+## Séance 5: jeudi 19/03/26
+Vérification PCB: changements certains composants\
+Création nouveau board\
+Travail sur l'architecture software: assignation des pins sur STM32CubeIDE et outline de leur configuration

@@ -1,5 +1,14 @@
 ## Fonctions à coder
 ### Fonctionnement PCB
+rfid_init
+rfid_reset
+rfid_write
+rfid_read
+rfid_receive
+rfid_transmit
+rfid_transceive
+
+
 Lecture infos:
 - lecture tag RFID et transmission données à la STM
 - décodage
@@ -12,6 +21,9 @@ Ecriture infos:
 - écriture sur le tag RFID
 
 Enregistrement tag RFID (si nouveau par exemple) ...
+
+### USB
+AN 2.1.3 gestion Vusb après reset.
 
 ### Interface PC
 

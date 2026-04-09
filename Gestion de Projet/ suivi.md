@@ -30,3 +30,8 @@ Travail sur l'architecture software:
 Vérification PCB: changements certains composants\
 Création nouveau board\
 Travail sur l'architecture software: assignation des pins sur STM32CubeIDE et outline de leur configuration
+
+## Séance 6: jeudi 09/04/26
+Test du lecteur RFID sur une STM32 avec code\
+Fin de l'attribution des empreintes\
+Début du routage du PCB

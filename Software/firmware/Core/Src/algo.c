@@ -22,17 +22,17 @@ void test(){
 
 	uint8_t readData[size*2];
 	read(&hrfid1, readData, size);
-	printf("Read 'written' data at Ox%x.\r\n", readData);
+	printf("Read 'written' data stored at Ox%x.\r\n", readData);
 	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
 }
 
 void read(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
 	RFID_receive(hrfid, pdata,size);
-	//envoi USART (USB)
+	HAL_UART_Transmit(huart1, pdata, size, 500); //envoi USART (USB)
 }
 
 void write(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
-	//avec données reçues de l'USB -> 'remplace' pdata
+	HAL_UART_Receive(huart1, pdata, size, 500); //avec données reçues de l'USB
 	RFID_transmit(hrfid, pdata, size);
 }
 

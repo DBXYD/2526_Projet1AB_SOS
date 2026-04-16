@@ -1,1 +1,4 @@
 ../Core/Src/rfid.c:11:6:RFID_init	1
+../Core/Src/rfid.c:27:6:RFID_transmit	1
+../Core/Src/rfid.c:33:6:RFID_receive	1
+../Core/Src/rfid.c:39:6:RFID_transmit_receive	1

@@ -28,5 +28,8 @@ void RFID_init(RFID_HandleTypeDef* hrfid,
 		uint16_t hspi_nss_pin,
 		GPIO_TypeDef* rst_port,
 		uint16_t rst_pin);
+void RFID_transmit(RFID_HandleTypeDef* hrfid, uint8_t* data, int size);
+void RFID_receive(RFID_HandleTypeDef* hrfid, uint8_t* data, int size);
+void RFID_transmit_receive(RFID_HandleTypeDef* hrfid, uint8_t* pTxData, uint8_t* pRxData, int size);
 
 #endif /* INC_RFID_H_ */

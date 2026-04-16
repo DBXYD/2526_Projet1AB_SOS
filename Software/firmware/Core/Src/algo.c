@@ -6,10 +6,38 @@
  */
 #include "algo.h"
 
+void test(){
+	// read/write
+	int size= 8;
+	uint8_t data[size];
+	int sizeLog= 8;
+	uint8_t log[sizeLog];
+	log[0]= 0x03;
+	log[1]= 0x05;
+	log[4]= 0x07;
+	read(&hrfid1, data, size);
+	printf("Received data at Ox%x.\r\n", data);
+	write(&hrfid1, log, sizeLog);
+	printf("Wrote data at Ox%x.\r\n", log);
+
+	uint8_t readData[size*2];
+	read(&hrfid1, readData, size);
+	printf("Read 'written' data at Ox%x.\r\n", readData);
+	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
+}
+
+void read(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+	RFID_receive(hrfid, pdata,size);
+	//envoi USART (USB)
+}
+
+void write(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+	//avec données reçues de l'USB -> 'remplace' pdata
+	RFID_transmit(hrfid, pdata, size);
+}
 
 uint8_t SPI1_WriteRead(uint8_t data,SPI_HandleTypeDef hspi1) {
     uint8_t stock;
     HAL_SPI_TransmitReceive(&hspi1, &data, &stock, 1, HAL_MAX_DELAY);
     return stock;
 }
-

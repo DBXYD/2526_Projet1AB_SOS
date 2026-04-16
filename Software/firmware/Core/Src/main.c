@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "rfid.h"
+#include "algo.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -105,7 +106,7 @@ int main(void)
 	MX_USB_OTG_FS_PCD_Init();
 	MX_USART2_UART_Init();
 	/* USER CODE BEGIN 2 */
-	printf("Hello world\r\n");
+	printf("Hello world Init\r\n");
 	// INIT RFID
 	RFID_init(&hrfid1, &hspi1, SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, RFID_RST_GPIO_Port, RFID_RST_Pin);
 	/* USER CODE END 2 */
@@ -116,8 +117,7 @@ int main(void)
 	{
 		printf("Hello world\r\n");
 		HAL_Delay(1000);
-		//		uint8_t data= 1;
-		//		printf("For %u sent received %u", data, SPI1_WriteRead(data,hspi1));
+		test();
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */

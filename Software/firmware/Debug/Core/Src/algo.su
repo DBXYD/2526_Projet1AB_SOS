@@ -1,0 +1,4 @@
+../Core/Src/algo.c:9:6:test	104	dynamic
+../Core/Src/algo.c:29:6:read	24	static
+../Core/Src/algo.c:33:6:write	24	static
+../Core/Src/algo.c:37:9:SPI1_WriteRead	40	static

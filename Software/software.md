@@ -1,3 +1,14 @@
+## Infos RFID
+ID = emplacement sur RFID
+MPN et SKU à partir du fichier excel
+
+boîte et RFID indissociables + on part du principe qu'à une boîte=RFID correspond un emplacement: si on veut changer un composant de place on le change de boîte et on doit pouvoir modifier son emplacement sur le fichier excel
+
+| format emplacement | salle | meuble | tiroir | colonne | ligne |
+|--------:|-------  -|-----------|---------|-------|-------|
+| max (entier/bits) taille | Patricia+D265/4 | tiro-class/4 | 9?/8 pour être sûrs | 12/4 | 8/4 |
+
+
 ## Fonctions à coder
 ### Fonctionnement PCB
 rfid_init

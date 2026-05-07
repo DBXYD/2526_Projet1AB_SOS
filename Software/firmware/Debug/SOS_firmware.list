@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00008068  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0001805a  00000000  00000000  00008098  2**0
+ 12 .debug_info   00018076  00000000  00000000  00008098  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 0000377d  00000000  00000000  000200f2  2**0
+ 13 .debug_abbrev 0000377d  00000000  00000000  0002010e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00001518  00000000  00000000  00023870  2**3
+ 14 .debug_aranges 00001518  00000000  00000000  00023890  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00001049  00000000  00000000  00024d88  2**0
+ 15 .debug_rnglists 00001049  00000000  00000000  00024da8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0002a225  00000000  00000000  00025dd1  2**0
+ 16 .debug_macro  0002a225  00000000  00000000  00025df1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0001b19a  00000000  00000000  0004fff6  2**0
+ 17 .debug_line   0001b197  00000000  00000000  00050016  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000fa060  00000000  00000000  0006b190  2**0
+ 18 .debug_str    000fa060  00000000  00000000  0006b1ad  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  001651f0  2**0
+ 19 .comment      00000043  00000000  00000000  0016520d  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00005fe8  00000000  00000000  00165234  2**2
+ 20 .debug_frame  00005fe8  00000000  00000000  00165250  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 0000007f  00000000  00000000  0016b21c  2**0
+ 21 .debug_line_str 0000007f  00000000  00000000  0016b238  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -526,150 +526,152 @@ void test(){
  800065c:	6a3b      	ldr	r3, [r7, #32]
  800065e:	2207      	movs	r2, #7
  8000660:	711a      	strb	r2, [r3, #4]
-	read(&hrfid1, data, size);
- 8000662:	6b7a      	ldr	r2, [r7, #52]	@ 0x34
- 8000664:	6af9      	ldr	r1, [r7, #44]	@ 0x2c
- 8000666:	482b      	ldr	r0, [pc, #172]	@ (8000714 <test+0x178>)
- 8000668:	f000 f85e 	bl	8000728 <read>
+	read(&huart1, &hrfid1, data, size);
+ 8000662:	6b7b      	ldr	r3, [r7, #52]	@ 0x34
+ 8000664:	6afa      	ldr	r2, [r7, #44]	@ 0x2c
+ 8000666:	492c      	ldr	r1, [pc, #176]	@ (8000718 <test+0x17c>)
+ 8000668:	482c      	ldr	r0, [pc, #176]	@ (800071c <test+0x180>)
+ 800066a:	f000 f861 	bl	8000730 <read>
 	printf("Received data at Ox%x.\r\n", data);
- 800066c:	6af9      	ldr	r1, [r7, #44]	@ 0x2c
- 800066e:	482a      	ldr	r0, [pc, #168]	@ (8000718 <test+0x17c>)
- 8000670:	f005 f9a4 	bl	80059bc <iprintf>
-	write(&hrfid1, log, sizeLog);
- 8000674:	6aba      	ldr	r2, [r7, #40]	@ 0x28
- 8000676:	6a39      	ldr	r1, [r7, #32]
- 8000678:	4826      	ldr	r0, [pc, #152]	@ (8000714 <test+0x178>)
- 800067a:	f000 f86f 	bl	800075c <write>
+ 800066e:	6af9      	ldr	r1, [r7, #44]	@ 0x2c
+ 8000670:	482b      	ldr	r0, [pc, #172]	@ (8000720 <test+0x184>)
+ 8000672:	f005 f9a3 	bl	80059bc <iprintf>
+	write(&huart1, &hrfid1, log, sizeLog);
+ 8000676:	6abb      	ldr	r3, [r7, #40]	@ 0x28
+ 8000678:	6a3a      	ldr	r2, [r7, #32]
+ 800067a:	4927      	ldr	r1, [pc, #156]	@ (8000718 <test+0x17c>)
+ 800067c:	4827      	ldr	r0, [pc, #156]	@ (800071c <test+0x180>)
+ 800067e:	f000 f86f 	bl	8000760 <write>
 	printf("Wrote data at Ox%x.\r\n", log);
- 800067e:	6a39      	ldr	r1, [r7, #32]
- 8000680:	4826      	ldr	r0, [pc, #152]	@ (800071c <test+0x180>)
- 8000682:	f005 f99b 	bl	80059bc <iprintf>
+ 8000682:	6a39      	ldr	r1, [r7, #32]
+ 8000684:	4827      	ldr	r0, [pc, #156]	@ (8000724 <test+0x188>)
+ 8000686:	f005 f999 	bl	80059bc <iprintf>
 
-	uint8_t readData[size*2];
- 8000686:	6b7b      	ldr	r3, [r7, #52]	@ 0x34
- 8000688:	0059      	lsls	r1, r3, #1
- 800068a:	1e4b      	subs	r3, r1, #1
- 800068c:	61fb      	str	r3, [r7, #28]
- 800068e:	460a      	mov	r2, r1
- 8000690:	2300      	movs	r3, #0
- 8000692:	4690      	mov	r8, r2
- 8000694:	4699      	mov	r9, r3
- 8000696:	f04f 0200 	mov.w	r2, #0
- 800069a:	f04f 0300 	mov.w	r3, #0
- 800069e:	ea4f 03c9 	mov.w	r3, r9, lsl #3
- 80006a2:	ea43 7358 	orr.w	r3, r3, r8, lsr #29
- 80006a6:	ea4f 02c8 	mov.w	r2, r8, lsl #3
- 80006aa:	460a      	mov	r2, r1
- 80006ac:	2300      	movs	r3, #0
- 80006ae:	4614      	mov	r4, r2
- 80006b0:	461d      	mov	r5, r3
- 80006b2:	f04f 0200 	mov.w	r2, #0
- 80006b6:	f04f 0300 	mov.w	r3, #0
- 80006ba:	00eb      	lsls	r3, r5, #3
- 80006bc:	ea43 7354 	orr.w	r3, r3, r4, lsr #29
- 80006c0:	00e2      	lsls	r2, r4, #3
- 80006c2:	460b      	mov	r3, r1
- 80006c4:	3307      	adds	r3, #7
- 80006c6:	08db      	lsrs	r3, r3, #3
- 80006c8:	00db      	lsls	r3, r3, #3
- 80006ca:	ebad 0d03 	sub.w	sp, sp, r3
- 80006ce:	ab02      	add	r3, sp, #8
- 80006d0:	3300      	adds	r3, #0
- 80006d2:	61bb      	str	r3, [r7, #24]
-	read(&hrfid1, readData, size);
- 80006d4:	6b7a      	ldr	r2, [r7, #52]	@ 0x34
- 80006d6:	69b9      	ldr	r1, [r7, #24]
- 80006d8:	480e      	ldr	r0, [pc, #56]	@ (8000714 <test+0x178>)
- 80006da:	f000 f825 	bl	8000728 <read>
+	uint8_t readData[size];
+ 800068a:	6b79      	ldr	r1, [r7, #52]	@ 0x34
+ 800068c:	1e4b      	subs	r3, r1, #1
+ 800068e:	61fb      	str	r3, [r7, #28]
+ 8000690:	460a      	mov	r2, r1
+ 8000692:	2300      	movs	r3, #0
+ 8000694:	4690      	mov	r8, r2
+ 8000696:	4699      	mov	r9, r3
+ 8000698:	f04f 0200 	mov.w	r2, #0
+ 800069c:	f04f 0300 	mov.w	r3, #0
+ 80006a0:	ea4f 03c9 	mov.w	r3, r9, lsl #3
+ 80006a4:	ea43 7358 	orr.w	r3, r3, r8, lsr #29
+ 80006a8:	ea4f 02c8 	mov.w	r2, r8, lsl #3
+ 80006ac:	460a      	mov	r2, r1
+ 80006ae:	2300      	movs	r3, #0
+ 80006b0:	4614      	mov	r4, r2
+ 80006b2:	461d      	mov	r5, r3
+ 80006b4:	f04f 0200 	mov.w	r2, #0
+ 80006b8:	f04f 0300 	mov.w	r3, #0
+ 80006bc:	00eb      	lsls	r3, r5, #3
+ 80006be:	ea43 7354 	orr.w	r3, r3, r4, lsr #29
+ 80006c2:	00e2      	lsls	r2, r4, #3
+ 80006c4:	460b      	mov	r3, r1
+ 80006c6:	3307      	adds	r3, #7
+ 80006c8:	08db      	lsrs	r3, r3, #3
+ 80006ca:	00db      	lsls	r3, r3, #3
+ 80006cc:	ebad 0d03 	sub.w	sp, sp, r3
+ 80006d0:	ab02      	add	r3, sp, #8
+ 80006d2:	3300      	adds	r3, #0
+ 80006d4:	61bb      	str	r3, [r7, #24]
+	read(&huart1, &hrfid1, readData, size);
+ 80006d6:	6b7b      	ldr	r3, [r7, #52]	@ 0x34
+ 80006d8:	69ba      	ldr	r2, [r7, #24]
+ 80006da:	490f      	ldr	r1, [pc, #60]	@ (8000718 <test+0x17c>)
+ 80006dc:	480f      	ldr	r0, [pc, #60]	@ (800071c <test+0x180>)
+ 80006de:	f000 f827 	bl	8000730 <read>
 	printf("Read 'written' data stored at Ox%x.\r\n", readData);
- 80006de:	69b9      	ldr	r1, [r7, #24]
- 80006e0:	480f      	ldr	r0, [pc, #60]	@ (8000720 <test+0x184>)
- 80006e2:	f005 f96b 	bl	80059bc <iprintf>
+ 80006e2:	69b9      	ldr	r1, [r7, #24]
+ 80006e4:	4810      	ldr	r0, [pc, #64]	@ (8000728 <test+0x18c>)
+ 80006e6:	f005 f969 	bl	80059bc <iprintf>
 	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
- 80006e6:	69bb      	ldr	r3, [r7, #24]
- 80006e8:	781b      	ldrb	r3, [r3, #0]
- 80006ea:	4619      	mov	r1, r3
- 80006ec:	69bb      	ldr	r3, [r7, #24]
- 80006ee:	791b      	ldrb	r3, [r3, #4]
- 80006f0:	461a      	mov	r2, r3
- 80006f2:	69bb      	ldr	r3, [r7, #24]
- 80006f4:	7a1b      	ldrb	r3, [r3, #8]
- 80006f6:	4618      	mov	r0, r3
- 80006f8:	69bb      	ldr	r3, [r7, #24]
- 80006fa:	7b1b      	ldrb	r3, [r3, #12]
- 80006fc:	9300      	str	r3, [sp, #0]
- 80006fe:	4603      	mov	r3, r0
- 8000700:	4808      	ldr	r0, [pc, #32]	@ (8000724 <test+0x188>)
- 8000702:	f005 f95b 	bl	80059bc <iprintf>
- 8000706:	f8d7 d004 	ldr.w	sp, [r7, #4]
+ 80006ea:	69bb      	ldr	r3, [r7, #24]
+ 80006ec:	781b      	ldrb	r3, [r3, #0]
+ 80006ee:	4619      	mov	r1, r3
+ 80006f0:	69bb      	ldr	r3, [r7, #24]
+ 80006f2:	791b      	ldrb	r3, [r3, #4]
+ 80006f4:	461a      	mov	r2, r3
+ 80006f6:	69bb      	ldr	r3, [r7, #24]
+ 80006f8:	7a1b      	ldrb	r3, [r3, #8]
+ 80006fa:	4618      	mov	r0, r3
+ 80006fc:	69bb      	ldr	r3, [r7, #24]
+ 80006fe:	7b1b      	ldrb	r3, [r3, #12]
+ 8000700:	9300      	str	r3, [sp, #0]
+ 8000702:	4603      	mov	r3, r0
+ 8000704:	4809      	ldr	r0, [pc, #36]	@ (800072c <test+0x190>)
+ 8000706:	f005 f959 	bl	80059bc <iprintf>
+ 800070a:	f8d7 d004 	ldr.w	sp, [r7, #4]
 }
- 800070a:	bf00      	nop
- 800070c:	373c      	adds	r7, #60	@ 0x3c
- 800070e:	46bd      	mov	sp, r7
- 8000710:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
- 8000714:	20000084 	.word	0x20000084
- 8000718:	08006768 	.word	0x08006768
- 800071c:	08006784 	.word	0x08006784
- 8000720:	0800679c 	.word	0x0800679c
- 8000724:	080067c4 	.word	0x080067c4
+ 800070e:	bf00      	nop
+ 8000710:	373c      	adds	r7, #60	@ 0x3c
+ 8000712:	46bd      	mov	sp, r7
+ 8000714:	e8bd 8ff0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 8000718:	20000084 	.word	0x20000084
+ 800071c:	2000014c 	.word	0x2000014c
+ 8000720:	08006768 	.word	0x08006768
+ 8000724:	08006784 	.word	0x08006784
+ 8000728:	0800679c 	.word	0x0800679c
+ 800072c:	080067c4 	.word	0x080067c4
 
-08000728 <read>:
+08000730 <read>:
 
-void read(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
- 8000728:	b580      	push	{r7, lr}
- 800072a:	b084      	sub	sp, #16
- 800072c:	af00      	add	r7, sp, #0
- 800072e:	60f8      	str	r0, [r7, #12]
- 8000730:	60b9      	str	r1, [r7, #8]
- 8000732:	607a      	str	r2, [r7, #4]
-	RFID_receive(hrfid, pdata,size);
- 8000734:	687a      	ldr	r2, [r7, #4]
- 8000736:	68b9      	ldr	r1, [r7, #8]
- 8000738:	68f8      	ldr	r0, [r7, #12]
- 800073a:	f000 f9af 	bl	8000a9c <RFID_receive>
-	HAL_UART_Transmit(&huart1, pdata, size, 500); //envoi USART (USB)
- 800073e:	687b      	ldr	r3, [r7, #4]
- 8000740:	b29a      	uxth	r2, r3
- 8000742:	f44f 73fa 	mov.w	r3, #500	@ 0x1f4
- 8000746:	68b9      	ldr	r1, [r7, #8]
- 8000748:	4803      	ldr	r0, [pc, #12]	@ (8000758 <read+0x30>)
- 800074a:	f003 ff8b 	bl	8004664 <HAL_UART_Transmit>
+void read(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+ 8000730:	b580      	push	{r7, lr}
+ 8000732:	b084      	sub	sp, #16
+ 8000734:	af00      	add	r7, sp, #0
+ 8000736:	60f8      	str	r0, [r7, #12]
+ 8000738:	60b9      	str	r1, [r7, #8]
+ 800073a:	607a      	str	r2, [r7, #4]
+ 800073c:	603b      	str	r3, [r7, #0]
+	// reads hrfid card, puts size Bytes in data buffer pdata and sends it to PC via USB huart
+	RFID_receive(hrfid, pdata, size);
+ 800073e:	683a      	ldr	r2, [r7, #0]
+ 8000740:	6879      	ldr	r1, [r7, #4]
+ 8000742:	68b8      	ldr	r0, [r7, #8]
+ 8000744:	f000 f9aa 	bl	8000a9c <RFID_receive>
+	HAL_UART_Transmit(huart, pdata, size, 500); //envoi USART (USB)
+ 8000748:	683b      	ldr	r3, [r7, #0]
+ 800074a:	b29a      	uxth	r2, r3
+ 800074c:	f44f 73fa 	mov.w	r3, #500	@ 0x1f4
+ 8000750:	6879      	ldr	r1, [r7, #4]
+ 8000752:	68f8      	ldr	r0, [r7, #12]
+ 8000754:	f003 ff86 	bl	8004664 <HAL_UART_Transmit>
 }
- 800074e:	bf00      	nop
- 8000750:	3710      	adds	r7, #16
- 8000752:	46bd      	mov	sp, r7
- 8000754:	bd80      	pop	{r7, pc}
- 8000756:	bf00      	nop
- 8000758:	2000014c 	.word	0x2000014c
+ 8000758:	bf00      	nop
+ 800075a:	3710      	adds	r7, #16
+ 800075c:	46bd      	mov	sp, r7
+ 800075e:	bd80      	pop	{r7, pc}
 
-0800075c <write>:
+08000760 <write>:
 
-void write(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
- 800075c:	b580      	push	{r7, lr}
- 800075e:	b084      	sub	sp, #16
- 8000760:	af00      	add	r7, sp, #0
- 8000762:	60f8      	str	r0, [r7, #12]
- 8000764:	60b9      	str	r1, [r7, #8]
- 8000766:	607a      	str	r2, [r7, #4]
-	HAL_UART_Receive(&huart1, pdata, size, 500); //avec données reçues de l'USB
- 8000768:	687b      	ldr	r3, [r7, #4]
- 800076a:	b29a      	uxth	r2, r3
- 800076c:	f44f 73fa 	mov.w	r3, #500	@ 0x1f4
- 8000770:	68b9      	ldr	r1, [r7, #8]
- 8000772:	4806      	ldr	r0, [pc, #24]	@ (800078c <write+0x30>)
- 8000774:	f004 f809 	bl	800478a <HAL_UART_Receive>
+void write(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+ 8000760:	b580      	push	{r7, lr}
+ 8000762:	b084      	sub	sp, #16
+ 8000764:	af00      	add	r7, sp, #0
+ 8000766:	60f8      	str	r0, [r7, #12]
+ 8000768:	60b9      	str	r1, [r7, #8]
+ 800076a:	607a      	str	r2, [r7, #4]
+ 800076c:	603b      	str	r3, [r7, #0]
+	HAL_UART_Receive(huart, pdata, size, 500); //avec données reçues de l'USB
+ 800076e:	683b      	ldr	r3, [r7, #0]
+ 8000770:	b29a      	uxth	r2, r3
+ 8000772:	f44f 73fa 	mov.w	r3, #500	@ 0x1f4
+ 8000776:	6879      	ldr	r1, [r7, #4]
+ 8000778:	68f8      	ldr	r0, [r7, #12]
+ 800077a:	f004 f806 	bl	800478a <HAL_UART_Receive>
 	RFID_transmit(hrfid, pdata, size);
- 8000778:	687a      	ldr	r2, [r7, #4]
- 800077a:	68b9      	ldr	r1, [r7, #8]
- 800077c:	68f8      	ldr	r0, [r7, #12]
- 800077e:	f000 f96b 	bl	8000a58 <RFID_transmit>
+ 800077e:	683a      	ldr	r2, [r7, #0]
+ 8000780:	6879      	ldr	r1, [r7, #4]
+ 8000782:	68b8      	ldr	r0, [r7, #8]
+ 8000784:	f000 f968 	bl	8000a58 <RFID_transmit>
 }
- 8000782:	bf00      	nop
- 8000784:	3710      	adds	r7, #16
- 8000786:	46bd      	mov	sp, r7
- 8000788:	bd80      	pop	{r7, pc}
- 800078a:	bf00      	nop
- 800078c:	2000014c 	.word	0x2000014c
+ 8000788:	bf00      	nop
+ 800078a:	3710      	adds	r7, #16
+ 800078c:	46bd      	mov	sp, r7
+ 800078e:	bd80      	pop	{r7, pc}
 
 08000790 <MX_GPIO_Init>:
         * Output

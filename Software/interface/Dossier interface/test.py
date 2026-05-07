@@ -16,9 +16,24 @@ loc = [room,drawer,column,raw]
 
 '''root = Tk()
 root.title("Gestion des inventaires")
+# creates serial port and opens it
 #ser = serial.Serial('/dev/ttyUSB0', 9600) #lirena_values=['NA', '-', 'N/A'])
 
-#emplacement = ser.decode()
+
+# reads n bytes sent to port ser via usb
+n= 
+data= ser.read(n)
+
+# or reads everything after waiting for data to be sent
+while not ser.in_waiting:
+    time.sleep(0.5)
+data = ser.read_all()
+
+loc = decode(data) # [room, furniture, drawer, column, row]
+
+# closing connection
+ser.close()
+
 
 
 

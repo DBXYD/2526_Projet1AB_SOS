@@ -15,13 +15,13 @@ void test(){
 	log[0]= 0x03;
 	log[1]= 0x05;
 	log[4]= 0x07;
-	read(&hrfid1, data, size);
+	read(&huart1, &hrfid1, data, size);
 	printf("Received data at Ox%x.\r\n", data);
-	write(&hrfid1, log, sizeLog);
+	write(&huart1, &hrfid1, log, sizeLog);
 	printf("Wrote data at Ox%x.\r\n", log);
 
-	uint8_t readData[size*2];
-	read(&hrfid1, readData, size);
+	uint8_t readData[size];
+	read(&huart1, &hrfid1, readData, size);
 	printf("Read 'written' data stored at Ox%x.\r\n", readData);
 	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
 }

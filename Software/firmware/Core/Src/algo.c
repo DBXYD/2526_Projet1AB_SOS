@@ -26,13 +26,14 @@ void test(){
 	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
 }
 
-void read(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
-	RFID_receive(hrfid, pdata,size);
-	HAL_UART_Transmit(huart1, pdata, size, 500); //envoi USART (USB)
+void read(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+	// reads hrfid card, puts size Bytes in data buffer pdata and sends it to PC via USB huart
+	RFID_receive(hrfid, pdata, size);
+	HAL_UART_Transmit(huart, pdata, size, 500); //envoi USART (USB)
 }
 
-void write(RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
-	HAL_UART_Receive(huart1, pdata, size, 500); //avec données reçues de l'USB
+void write(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
+	HAL_UART_Receive(huart, pdata, size, 500); //avec données reçues de l'USB
 	RFID_transmit(hrfid, pdata, size);
 }
 

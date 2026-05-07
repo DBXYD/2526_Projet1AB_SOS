@@ -4,9 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-openpyxl = "*"
+tcl = "*"
+tkinter-qpython = "*"
+serial = "*"
+pyserial = "*"
+serial-interface = "*"
+pandas = "*"
+xlrd = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.12"
+python_full_version = "3.12.3"

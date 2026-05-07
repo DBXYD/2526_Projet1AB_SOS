@@ -1,16 +1,24 @@
 import tkinter
 from tkinter import *
 from tkinter import ttk
-
+import pandas as pd
+import xlrd
 import serial
 from serial import Serial
 
 
-root = Tk()
-root.title("Gestion des inventaires")
-ser = serial.Serial('/dev/ttyUSB0', 9600)
+data = pd.ExcelFile("../Excel/2526_Stock_components.xlsx")
 
-emplacement = ser.decode()
+df = pd.read_excel('2526_Stock_components.xlsx', sheet_name = 'components', header = 0, usecols='Q:U ', skiprows=None, na_values=['NA', '-', 'N/A'])
+
+
+'''root = Tk()
+root.title("Gestion des inventaires")
+#ser = serial.Serial('/dev/ttyUSB0', 9600) #lirena_values=['NA', '-', 'N/A'])
+
+#emplacement = ser.decode()
+
+
 
 mainframe = ttk.Frame(root, padding=(3, 3, 100, 100))
 mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
@@ -30,4 +38,4 @@ for child in mainframe.winfo_children():
 
 
 
-root.mainloop()
+root.mainloop()'''

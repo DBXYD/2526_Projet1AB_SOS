@@ -28,11 +28,6 @@
       "vias": true,
       "zones": true
     },
-<<<<<<< HEAD
-    "visible_items": [],
-    "visible_layers": "fffffff_ffffffff",
-    "zone_display_mode": 0
-=======
     "visible_items": [
       "vias",
       "footprint_text",
@@ -56,8 +51,7 @@
       "shapes"
     ],
     "visible_layers": "ffffffff_ffffffff_ffffffff_ffffffff",
-    "zone_display_mode": 1
->>>>>>> dd5173d7332a3ab332a8cf8a0a92e302ea381998
+    "zone_display_mode": 0
   },
   "git": {
     "integration_disabled": false,
@@ -67,7 +61,7 @@
   },
   "meta": {
     "filename": "SOS_Schematic (5).kicad_prl",
-    "version": 3
+    "version": 5
   },
   "net_inspector_panel": {
     "col_hidden": [

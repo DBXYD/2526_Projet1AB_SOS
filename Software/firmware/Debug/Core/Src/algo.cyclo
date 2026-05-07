@@ -1,4 +1,4 @@
 ../Core/Src/algo.c:9:6:test	1
 ../Core/Src/algo.c:29:6:read	1
-../Core/Src/algo.c:33:6:write	1
-../Core/Src/algo.c:37:9:SPI1_WriteRead	1
+../Core/Src/algo.c:34:6:write	1
+../Core/Src/algo.c:39:9:SPI1_WriteRead	1

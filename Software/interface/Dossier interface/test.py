@@ -9,10 +9,17 @@ from serial import Serial
 data = pd.ExcelFile("../Excel/2526_Stock_components.xlsx")
 
 df = pd.read_excel("../Excel/2526_Stock_components.xlsx", sheet_name = 'components', header = 0, usecols='Q:U ', skiprows=None, na_values=['NA', '-', 'N/A'])
-print(df)
+#print(df)
 
-loc = [room,drawer,column,raw]
-[df[df['Room']==]]
+room = "D265"
+f="Tiro-class"
+drawer = 2
+column = 9
+raw=1
+loc = [room,f,drawer,column,raw]
+
+if df['Room']==loc[0]&df['Furniture']==loc[1]&df['Drawer']==loc[2]&df['Column']==loc[3]&df['Raw']==loc[4]:
+    print(df[])
 
 '''root = Tk()
 root.title("Gestion des inventaires")

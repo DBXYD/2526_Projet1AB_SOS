@@ -2,15 +2,17 @@ import tkinter
 from tkinter import *
 from tkinter import ttk
 import pandas as pd
-import xlrd
 import serial
 from serial import Serial
 
 
 data = pd.ExcelFile("../Excel/2526_Stock_components.xlsx")
 
-df = pd.read_excel('2526_Stock_components.xlsx', sheet_name = 'components', header = 0, usecols='Q:U ', skiprows=None, na_values=['NA', '-', 'N/A'])
+df = pd.read_excel("../Excel/2526_Stock_components.xlsx", sheet_name = 'components', header = 0, usecols='Q:U ', skiprows=None, na_values=['NA', '-', 'N/A'])
+print(df)
 
+loc = [room,drawer,column,raw]
+[df[df['Room']==]]
 
 '''root = Tk()
 root.title("Gestion des inventaires")

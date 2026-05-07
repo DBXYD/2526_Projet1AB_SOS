@@ -42,3 +42,9 @@ Mise en format des diapositives de la présentation\
 Mise en forme de la page d'explication de notre projet sur gitHub\
 Prolongement des tests du lecteur RFID sur une STM32 avec code sur cube IDE\
 Commande du PCB et fin des commandes des composants
+
+## Séance 8: Jeudi 7/05
+Présentation du routage\
+Avancement des diapositives\
+Avancement sur les codes\
+Commande du PCB

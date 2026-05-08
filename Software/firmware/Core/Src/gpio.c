@@ -46,15 +46,22 @@ void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
   __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, USR_LED_1_Pin|USR_LED_2_Pin|RFID_RST_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(RFID_RST_GPIO_Port, RFID_RST_Pin, GPIO_PIN_RESET);
+  /*Configure GPIO pins : USR_LED_1_Pin USR_LED_2_Pin RFID_RST_Pin */
+  GPIO_InitStruct.Pin = USR_LED_1_Pin|USR_LED_2_Pin|RFID_RST_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /*Configure GPIO pin : SPI1_NSS_Pin */
   GPIO_InitStruct.Pin = SPI1_NSS_Pin;
@@ -62,13 +69,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(SPI1_NSS_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : RFID_RST_Pin */
-  GPIO_InitStruct.Pin = RFID_RST_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(RFID_RST_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RFID_IRQ_Pin USR_BTN_1_Pin USR_BTN_2_Pin */
   GPIO_InitStruct.Pin = RFID_IRQ_Pin|USR_BTN_1_Pin|USR_BTN_2_Pin;

@@ -28,7 +28,7 @@ extern "C" {
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
-#include <stdio.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -57,6 +57,10 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define USR_LED_1_Pin GPIO_PIN_0
+#define USR_LED_1_GPIO_Port GPIOC
+#define USR_LED_2_Pin GPIO_PIN_1
+#define USR_LED_2_GPIO_Port GPIOC
 #define SPI1_NSS_Pin GPIO_PIN_4
 #define SPI1_NSS_GPIO_Port GPIOA
 #define RFID_RST_Pin GPIO_PIN_4

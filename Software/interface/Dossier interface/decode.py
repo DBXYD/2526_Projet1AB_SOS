@@ -1,4 +1,4 @@
-tableau_equiv= [["NaN"; "Patricia"; "D265"] ; ["NaN"; "tiro-class"]]
+tableau_equiv= [["NaN","Patricia", "D265"] , ["NaN", "tiro-class"]]
 
 
 def decode(data):
@@ -10,7 +10,8 @@ def decode(data):
     loc[2]= int(data[4:8], 16)
     loc[3]= int(data[8:10], 16)
     loc[4]= int(data[10:12], 16)
-    
     returns loc
+
+
 
 def message(emplacement):

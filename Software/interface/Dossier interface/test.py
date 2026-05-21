@@ -64,6 +64,66 @@ for child in mainframe.winfo_children():
 
 root.mainloop()
 
+
+
+class AppStock:
+
+
+        # --- Zone d'affichage des résultats ---
+        self.result_frame = tk.LabelFrame(root, text=" Informations Composant ", padx=20, pady=20)
+        self.result_frame.pack(padx=20, pady=20, fill="both", expand=True)
+
+        self.lbl_mpn = tk.Label(self.result_frame, text="Modèle : -", font=("Arial", 12, "bold"))
+        self.lbl_mpn.pack(anchor="w")
+
+        self.lbl_stock = tk.Label(self.result_frame, text="Stock : -", font=("Arial", 12))
+        self.lbl_stock.pack(anchor="w")
+
+        self.lbl_loc = tk.Label(self.result_frame, text="Emplacement : -", font=("Arial", 12), fg="blue")
+        self.lbl_loc.pack(anchor="w")
+
+        self.btn_quitter = tk.Button(root, text="Quitter", command=root.quit)
+        self.btn_quitter.pack(pady=10)
+
+    def rechercher(self, event=None):
+        recherche = self.entree.get().strip()
+        fichier = '2526_Stock_components(components).csv'
+        trouve = False
+
+        try:
+            with open(fichier, mode='r', encoding='utf-8') as f:
+                # Utilisation du délimiteur ; comme dans ton fichier
+                lecteur = csv.DictReader(f, delimiter=';')
+                for ligne in lecteur:
+                    # On cherche dans MPN, Value ou une colonne RFID
+                    if (recherche.lower() in ligne.get('MPN', '').lower() or 
+                        recherche.lower() in ligne.get('Value', '').lower()):
+                        
+                        self.afficher_infos(ligne)
+                        trouve = True
+                        break
+            
+            if not trouve:
+                messagebox.showwarning("Non trouvé", f"Aucun composant pour : {recherche}")
+            
+            self.entree.delete(0, tk.END) # Efface pour le prochain scan
+            
+        except FileNotFoundError:
+            messagebox.showerror("Erreur", "Fichier CSV introuvable !")
+
+    def afficher_infos(self, ligne):
+        self.lbl_mpn.config(text=f"Modèle : {ligne['MPN']}")
+        self.lbl_stock.config(text=f"Stock actuel : {ligne['Quantity']} pièces")
+        
+        # On combine les infos d'emplacement de ton fichier
+        loc = f"Tiroir {ligne['Drawer']} / Col {ligne['Column']} / Rang {ligne['Raw']}"
+        self.lbl_loc.config(text=f"Emplacement : {loc}")
+
+# Lancement de l'interface
+root = tk.Tk()
+app = AppStock(root)
+root.mainloop()
+
 '''
 
 import tkinter as tk
@@ -114,13 +174,15 @@ def display_info(MPN, SKU,loc):
         
 #texte_loc.set(f"Emplacement : Salle {nonassigne('Room',0)} {nonassigne('Furniture',0)} Tiroir {nonassigne('Drawer',2)} Colonne {nonassigne('Column',3)} Ligne {nonassigne('Raw',4)}")
 
-def display_base():
+'''def init_interfface():
     root = tk.Tk()
+    
     root.title("Gestion des inventaires")
+    
     root.state('zoomed')
     mainframe = tk.ttk.Frame(root, padding=(3, 3, 100, 100))
-    mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
-    
+    mainframe.grid(column=0, row=3, sticky=(tk.N, tk.W, tk.E, tk.S))
+   
     texte_mpn = tk.StringVar(value="MPN ")
     texte_loc = tk.StringVar(value="Emplacement ")
     texte_sku = tk.StringVar(value="SKU")
@@ -142,9 +204,31 @@ def display_base():
     mpn, sku = search_info(location)    
     display_info(mpn,sku,location)
 
-    root.mainloop()
-    
-def main ():
-    
-    display_base()
+    root.mainloop()'''
 
+root = tk.Tk()
+    
+root.title("Gestion des inventaires")
+
+root.state('zoomed')
+mainframe = ttk.Frame(root, padding=(3, 3, 100, 100))
+mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
+ 
+texte_mpn = tk.StringVar(value="MPN ")
+texte_loc = tk.StringVar(value="Emplacement ")
+
+texte_sku = tk.StringVar(value="SKU")
+ttk.Label(mainframe, text="Scannez un nouveau composant " ,).grid(column=2, row=0)
+label_mpn = ttk.Label(mainframe, textvariable=texte_mpn)
+label_mpn.grid(column=1, row=10)
+    
+label_loc = tk.ttk.Label(mainframe, textvariable=texte_loc)
+label_loc.grid(column=2, row=10)
+    
+label_sku = ttk.Label(mainframe, textvariable=texte_sku)
+label_sku.grid(column=3, row=10)
+   
+root.columnconfigure(0, weight=1)
+root.rowconfigure(0, weight=1)
+mainframe.columnconfigure(2, weight=1)
+root.mainloop()

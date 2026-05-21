@@ -3,6 +3,7 @@ import serial
 from tkinter import Entry, Label, END
 
 def decode(data):
+    # entree: bytes
     # supp 1B salle et meuble; 1B tiroir; 1B col et ligne
     # returns list of string: location as text
     data_hex= data.hex()

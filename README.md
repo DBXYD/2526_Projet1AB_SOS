@@ -79,9 +79,8 @@ Chaque boîte de rangement se voit attribuer un tag RFID unique. Le dispositif S
 ### 1.3 Solution mise en œuvre
 Le projet s'articule autour de deux parties :
 
-1) Hardware — Une carte électronique sur mesure intégrant une carte électronique sur mesure intégrant un microcontrôleur basse
+1) [Hardware](./Hardware) — Une carte électronique sur mesure intégrant une carte électronique sur mesure intégrant un microcontrôleur basse
 consommation STM32L4, un lecteur RFID communiquant via bus SPI matériel, et une interface USB-C assurant à la fois l’alimentation et l’échange de données haut débit.
-[Hardware](./Hardware)
 
 
 

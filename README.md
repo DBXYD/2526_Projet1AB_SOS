@@ -63,28 +63,29 @@ Question environnementale
 Dans le cadre de la gestion logistique des laboratoires de l'ENSEA, le suivi précis et rigoureux des composants électroniques constitue un défi quotidien. Actuellement, l'inventaire repose sur un référencement manuel via un fichier Excel, et le stockage physique est réparti dans des boîtes de dimensions variables.
 Ce mode de gestion présente plusieurs limites :
 
-- Erreurs d'indexation 
-— Risque élevé d'oublis ou de doubles saisies lors d'une mise à jour des stocks.
-Perte de traçabilité spatiale 
-— Difficulté à localiser physiquement les boîtes suite à des déplacements ou réorganisations.
-Asynchronisme des données 
-— Décalage temporel entre le mouvement réel d'un composant et sa mise à jour logicielle.
+- Erreurs d'indexation : Risque élevé d'oublis ou de doubles saisies lors d'une mise à jour des stocks.
+- Perte de traçabilité spatiale : Difficulté à localiser physiquement les boîtes suite à des déplacements ou réorganisations.
+- Asynchronisme des données : Décalage temporel entre le mouvement réel d'un composant et sa mise à jour logicielle.
 
 ### 1.2 Objectifs du Projet SOS
 Le projet SOS (Stock Organizer Scan) vise à concevoir un système embarqué de numérisation basé sur la technologie RFID (Radio Frequency Identification).
 Chaque boîte de rangement se voit attribuer un tag RFID unique. Le dispositif SOS lit et écrit ces puces pour associer un contenant physique à ses données logistiques :
-DonnéeDescriptionMPNManufacturer Part Number — référence exacte du constructeurSKUStock Keeping Unit — code interne d'identification du stockLocalisationSalle précise au sein de l'ENSEAQuantitéNombre d'exemplaires restants
+- Le MPN (Manufacturer Part Number) : référence exacte du constructeur
+- SKU (Stock Keeping Unit) : code interne d'identification du stock
+- LocalisationSalle précise au sein des différents tiroclasses de l'ENSEA
+- Quantité exact d'exemplaires restants
+
+
 ### 1.3 Solution mise en œuvre
 Le projet s'articule autour de deux parties :
 
-Hardware — Une carte électronique sur mesure intégrant :
-
-Un microcontrôleur basse consommation STM32L4
-Un lecteur RFID communiquant via bus SPI matériel
-Une interface USB-C assurant alimentation et échange de données
+1) Hardware — Une carte électronique sur mesure intégrant une carte électronique sur mesure intégrant un microcontrôleur basse
+consommation STM32L4, un lecteur RFID communiquant via bus SPI matériel, et une interface USB-C assurant à la fois l’alimentation et l’échange de données haut débit.
+[Hardware](./Hardware)
 
 
-Software — Une interface utilisateur développée en Python, permettant aux techniciens d'interagir avec la base de données.
+
+3) Software — Une interface utilisateur développée en Python, permettant aux techniciens d'interagir avec la base de données.
 
 
 ## 2. Analyse détaillée des blocs fonctionnels

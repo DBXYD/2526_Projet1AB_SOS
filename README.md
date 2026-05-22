@@ -79,18 +79,21 @@ Chaque boîte de rangement se voit attribuer un tag RFID unique. Le dispositif S
 ### 1.3 Solution mise en œuvre
 Le projet s'articule autour de deux parties :
 
-1) [Hardware](./Hardware) — Une carte électronique sur mesure intégrant une carte électronique sur mesure intégrant un microcontrôleur basse
+1) [Hardware](./Hardware) : Une carte électronique sur mesure intégrant une carte électronique sur mesure intégrant un microcontrôleur basse
 consommation STM32L4, un lecteur RFID communiquant via bus SPI matériel, et une interface USB-C assurant à la fois l’alimentation et l’échange de données haut débit.
 
 
 
-3) Software — Une interface utilisateur développée en Python, permettant aux techniciens d'interagir avec la base de données.
+3) [Software](./Software) : Une interface utilisateur développée en Python, permettant aux techniciens d'interagir avec la base de données.
 
 
 ## 2. Analyse détaillée des blocs fonctionnels
+Le schématique du système SOS (Stock Organizer Scan) est structuré de manière ri-
+goureuse en blocs fonctionnels distincts.
+
 ### 2.1 Bloc Alimentation (Power Supply)
 Ce bloc assure la conversion et la régulation de l'énergie nécessaire aux différents composants.
-Composants identifiés :
+- Composants identifiés :
 ComposantValeur / RéférenceRôleRégulateur LDOBU33SD5WG-TRConversion 5 V → 3,3 VC1, C21 µFCondensateurs de découplageSW1SW_SPDTInterrupteur d'alimentationD1, D2LEDIndicateurs d'étatR3, R43,4 kΩ / 1,6 kΩRésistances de limitation
 Justification des choix :
 

@@ -58,8 +58,8 @@ Software
 Question environnementale
 
 
-1. Introduction
-1.1 Contexte et Problématique
+## Introduction
+### 1.1 Contexte et Problématique
 Dans le cadre de la gestion logistique des laboratoires de l'ENSEA, le suivi précis et rigoureux des composants électroniques constitue un défi quotidien. Actuellement, l'inventaire repose sur un référencement manuel via un fichier Excel, et le stockage physique est réparti dans des boîtes de dimensions variables.
 Ce mode de gestion présente plusieurs limites :
 

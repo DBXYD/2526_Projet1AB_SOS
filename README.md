@@ -90,6 +90,7 @@ consommation STM32L4, un lecteur RFID communiquant via bus SPI matériel, et une
 ## 2. Analyse détaillée des blocs fonctionnels
 Le schématique du système SOS (Stock Organizer Scan) est structuré de manière ri-
 goureuse en blocs fonctionnels distincts.
+<img width="585" height="357" alt="image" src="https://github.com/user-attachments/assets/e62d326b-0834-417b-bf93-7d223d7096c7" />
 
 ### 2.1 Bloc Alimentation (Power Supply)
 Ce bloc assure la conversion et la régulation de l'énergie nécessaire aux différents composants.

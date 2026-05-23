@@ -90,13 +90,28 @@ consommation STM32L4, un lecteur RFID communiquant via bus SPI matériel, et une
 ## 2. Analyse détaillée des blocs fonctionnels
 Le schématique du système SOS (Stock Organizer Scan) est structuré de manière ri-
 goureuse en blocs fonctionnels distincts.
-<img width="585" height="357" alt="image" src="https://github.com/user-attachments/assets/e62d326b-0834-417b-bf93-7d223d7096c7" />
+
+
 
 ### 2.1 Bloc Alimentation (Power Supply)
+
+<img width="585" height="357" alt="image" src="https://github.com/user-attachments/assets/e62d326b-0834-417b-bf93-7d223d7096c7" />
+
 Ce bloc assure la conversion et la régulation de l'énergie nécessaire aux différents composants.
+
 - Composants identifiés :
-ComposantValeur / RéférenceRôleRégulateur LDOBU33SD5WG-TRConversion 5 V → 3,3 VC1, C21 µFCondensateurs de découplageSW1SW_SPDTInterrupteur d'alimentationD1, D2LEDIndicateurs d'étatR3, R43,4 kΩ / 1,6 kΩRésistances de limitation
-Justification des choix :
+-- Régulateur LDO :  BU33SD5WG-TR (5 V → 3.3 V)
+  Condensateurs : C1 (1 μF) et C2 (1 μF)
+  Interrupteur : SW_SPDT (SW1)
+  LEDs indicatrices : D1 et D2 avec résistances associées R3 (3.4 kΩ) et R4 (1.6 kΩ)
+
+- Justification des choix :
+-- BU33SD5WG-TR : Ce régulateur (LDO) est particulièrement adapté pour abaisser le
+5V issu de l’USB vers le rail 3.3 V. Son boîtier compact minimise l’empreinte au sol. De
+plus, sa capacité en courant ici est largement suffisante pour alimenter simultanément
+notre microcontrôleur STM32 et le lecteur RFID.
+
+
 
 BU33SD5WG-TR — LDO compact, idéal pour abaisser le 5 V USB vers 3,3 V avec une capacité en courant suffisante pour alimenter simultanément le STM32 et le lecteur RFID.
 C1 et C2 (1 µF) — Placés en découplage sur l'entrée et la sortie du LDO conformément aux spécifications constructeur, pour stabiliser la tension.

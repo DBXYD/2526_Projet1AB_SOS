@@ -147,7 +147,6 @@ texte_mpn = tk.StringVar(value="MPN ")
 texte_loc = tk.StringVar(value="Emplacement ")
 
 texte_sku = tk.StringVar(value="SKU")
-ttk.Label(mainframe, text="Scannez un nouveau composant " ,).grid(column=2, row=0)
 label_mpn = ttk.Label(mainframe, textvariable=texte_mpn)
 label_mpn.grid(column=1, row=10)
     

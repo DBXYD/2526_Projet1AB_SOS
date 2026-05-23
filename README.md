@@ -1,64 +1,5 @@
 # 2526_Projet1AB_SOS
 ## Introduction
-### Projet SOS: Stock Organizer Scan
-L'objectif de ce projet est de créer un scanner et programmeur RFID pour la gestion des inventaires de l'ENSEA.
-
-Actuellement, les divers composants en stock à l'école sont inventoriés dans un fichier Excel et rangés dans des boîtes de taille variable. Le problème constaté est la difficulté de suivi de ces stocks (changement de localisation des boîtes, mise à jour des stocks).
-C'est pourquoi un système permettant l'accès à l'inventaire a été pensé. En effet, nous cherchons à réaliser un scan de composant grâce à un lecteur RFID permettant de pouvoir retrouver l'identité d'un composant scané ainsi que le rangement et le nombre d'exemplaire restant.
-
-Au fond de chaque boîte sera fixé une puce RFID l'identifiant. Le SOS assurera l'interaction entre la puce et l'utilisateur, qui pourra depuis un ordinateur accéder en lecture/écriture à son emplacement, son MPN et son SKU.
-
-## Vue d'ensemble du projet
-La partie hardware de SOS devra donc comprendre un moyen de scanner la puce RFID et un port USB pour la communication avec un PC sous Linux.
-La partie software sera centrée sur une interface faite avec Python assurant les fonctions susmentionnées.
-
-## Annexes
-### Justification des choix de composants
-- Microcontrôleur : le microcontrôleur possède un écosystème connu à l'ENSEA avec des performances suffisantes pour gérer le SPI du RFID et l'USB simultanément.
-- Connecteur USB-C : nous n'utilisons pas de Micro-USB en raison de la réversbilité, de la robustesse mécanique et des standards actuels des entreprises que l'USB-C confert.
-- Protection USB-C : indispensable pour protéger le microcontôleur contre l'électricité statique lorsqu'un utiisateur touche le connecterur USB.
-
-### Diagramme des Signaux
-- RFID <-> STM32 : communication grâce au bus SPI (grande vitesse pour lire les identifiants SKU/MPN).
-- STM32 <-> PC : communication via UART (converti en USB par le port série virtuel) pour l'interface Python.
-- Feedback : les LEDs USR_LED_1 et USR_LED_2 permettent de confirmer visulement que la boîte à bien été scannée.
-
-### Alimentaion
-- Entrée : 5V provenant de l'USB
-- Régulation : Utilisatin d'un régulateur LDO por abaisser la tension à 3.3V nécessaire pour le STM32 et le module RFID.
-- Condensateurs de filtrage : permettent d'éviter la chute de tension des pics de consommations du lecteur RFID.
-
-### Spécifications du Routage
-- Largeur des pistes : plus large pour l'alimentaion pour limiter la résistance et plus fines pour les signaux de donées.
-- Trous de fixation : Emplacements prévus pour visser la carte au fond d'un boîtier imprimé en 3D.
-
-Table des matières
-
-Introduction
-
-Contexte et Problématique
-Objectifs du Projet SOS
-Solution mise en œuvre
-
-
-Analyse des blocs fonctionnels
-
-Bloc Alimentation
-Bloc Port USB-C
-Bloc STM32
-Bloc Lecteur RFID
-Bloc Connecteur SWD
-Boutons et signaux utilisateur
-Trous de fixation
-
-
-Routage
-Configuration des pins
-Software
-Question environnementale
-
-# 2526_Projet1AB_SOS
-## Introduction
 ### 1.1 Contexte et Problématique
 Dans le cadre de la gestion logistique des laboratoires de l'ENSEA, le suivi précis et rigoureux des composants électroniques constitue un défi quotidien. Actuellement, l'inventaire repose sur un référencement manuel via un fichier Excel, et le stockage physique est réparti dans des boîtes de dimensions variables.
 Ce mode de gestion présente plusieurs limites :
@@ -100,77 +41,197 @@ goureuse en blocs fonctionnels distincts.
 Ce bloc assure la conversion et la régulation de l'énergie nécessaire aux différents composants.
 
 - Composants identifiés :
--- Régulateur LDO :  BU33SD5WG-TR (5 V → 3.3 V)
-  Condensateurs : C1 (1 μF) et C2 (1 μF)
-  Interrupteur : SW_SPDT (SW1)
-  LEDs indicatrices : D1 et D2 avec résistances associées R3 (3.4 kΩ) et R4 (1.6 kΩ)
+  - Régulateur LDO :  BU33SD5WG-TR (5 V → 3.3 V)
+  - Condensateurs : C1 (1 μF) et C2 (1 μF)
+  - Interrupteur : SW_SPDT (SW1)
+  - LEDs indicatrices : D1 et D2 avec résistances associées R3 (3.4 kΩ) et R4 (1.6 kΩ)
 
-- Justification des choix :
--- BU33SD5WG-TR : Ce régulateur (LDO) est particulièrement adapté pour abaisser le
-5V issu de l’USB vers le rail 3.3 V. Son boîtier compact minimise l’empreinte au sol. De
-plus, sa capacité en courant ici est largement suffisante pour alimenter simultanément
-notre microcontrôleur STM32 et le lecteur RFID.
 
 
 
-BU33SD5WG-TR — LDO compact, idéal pour abaisser le 5 V USB vers 3,3 V avec une capacité en courant suffisante pour alimenter simultanément le STM32 et le lecteur RFID.
-C1 et C2 (1 µF) — Placés en découplage sur l'entrée et la sortie du LDO conformément aux spécifications constructeur, pour stabiliser la tension.
-SW1 (SW_SPDT) — Permet de couper l'alimentation sans débrancher physiquement le câble USB.
+- Justification des choix :
+  - BU33SD5WG-TR : Ce régulateur (LDO) est particulièrement adapté pour abaisser le 5V issu de l’USB vers le rail 3.3 V. Son boîtier compact minimise l’empreinte au sol. De plus, sa capacité en courant ici est largement suffisante pour alimenter simultanément notre microcontrôleur STM32 et le lecteur RFID.
+
+  - C1 et C2 (1 μF) : Placés en découplage direct sur l’entrée et la sortie du LDO conformément aux spécifications du constructeur. Ils stabilisent la tension ici.
+  - SW1 (SW_SPDT) : Permet de couper l’alimentation de la carte sans avoir à débrancher physiquement le câble USB. Cela est plutôt intéressant d’un point de vue confort d’utilisation.
 
 
 ### 2.2 Bloc Port USB (USB-C)
-L'interface USB-C gère le transfert de données et l'apport d'énergie principal.
-Composants identifiés :
-ComposantRéférenceRôleConnecteur USB-CJ1 — 629722000214Connecteur principalProtection ESDU2 — USBLC6-2SC6Protection des lignes D+/D−R1, R25,4 kΩ / 5,1 kΩConfiguration CC1/CC2
-Justification des choix :
 
-USB-C (vs Micro-USB) — Réversible, plus robuste mécaniquement.
-USBLC6-2SC6 — Réseau de diodes TVS bidirectionnel ultra-faible capacité, indispensable contre les décharges électrostatiques (ESD) lors de la manipulation du connecteur.
+<img width="808" height="500" alt="image" src="https://github.com/user-attachments/assets/f65551fc-c018-4f00-b9a4-c569cc49adb4" />
+
+L'interface USB-C gère le transfert de données et l'apport d'énergie principal.
+
+- Composants identifiés :
+  - Connecteur USB-C : J1 (Référence commerciale : 629722000214)
+  - Protection ESD : U2 (USBLC6-2SC6)
+  - Résistances de configuration : R1 (5.4 kΩ), R2 (5.1 kΩ) sur les lignes CC1/CC2
+  - 
+- Justification des choix :
+  - Connecteur Molex USB-C : Nous avons opter ici pour USB-C et non un Micro-USB car
+le premier est réversible et largement plus robustesse.
+  - USBLC6-2SC6 : Réseau de diodes TVS bidirectionnel ultra-faible capacité dédié à la
+protection des lignes D+ et D−. Cette protection est indispensable contre les décharges
+électrostatiques (ESD) induites lorsque’un humaine manipule le connecteur USB manuellement.
+
+
+
 
 
 ### 2.3 Bloc STM32 (Microcontrôleur principal)
-Le cœur logique du système repose sur le STM32L476RGTx (boîtier LQFP64) de STMicroelectronics.
-Signaux routés notables :
-SignalFonctionSPI1_*Liaison vers le lecteur RFIDVCP_TX / VCP_RXInterface UART → USB pour communication PythonUSB_DN / USB_DPLignes différentielles du bus USB physiqueSWDIO / SWCLKInterface de programmation/débogage JTAG/SWDUSR_LED_1 / USR_LED_2Indication d'état (ex : scan réussi)NRST / BOOT0Lignes de contrôle
 
-Note : Les condensateurs de découplage C5 à C10 (100 nF) sont assignés individuellement à chaque broche VDD du STM32 pour supprimer le bruit haute fréquence issu des commutations internes.
+<img width="611" height="877" alt="image" src="https://github.com/user-attachments/assets/0fe394a4-3ff7-4fe9-bc99-223fed6b7e5d" />
+
+Le cœur logique du système repose sur le STM32L476RGTx (boîtier LQFP64) de STMicroelectronics. Composant central : STM32L476RGTx.
+
+Ecosystème ENSEA : Il s’agit d’un composant sur lequel nous avons ulterieusrement eu a travaillé durant les séances de TD et TP surtout. SPI Matériel dispose de plusieurs bus SPI indépendants pour piloter à haute fréquence le lecteur RFID.
+
+- Signaux notables :
+  - SPI1_* → Liaison vers le lecteur RFID.
+  - VCP_TX / VCP_RX → Interface UART pontée vers l’USB pour la communication avec le
+script Python.
+  - USB_DN / USB_DP → Lignes différentielles du bus USB physique.
+  - SWDIO / SWCLK → Interface de programmation/débogage JTAG/SWD.
+  - USR_LED_1 / USR_LED_2 → Indication d’état utilisateur (ex : scan réussi).
+  - NRST / BOOT0 → Lignes de contrôle.
+ 
+Remarque : Les condensateurs de découplage (C5 à C10, 100 nF) sont assignés individuellement à chaque broche d’alimentation VDD du STM32. Ils suppriment le bruit haute fréquence issu des commutations internes du coeur.
+
 
 
 ### 2.4 Bloc Lecteur RFID
+<img width="608" height="293" alt="image" src="https://github.com/user-attachments/assets/06681ab6-ed1c-4f6f-b50f-fd46d644c5a4" />
+
 Ce bloc gère l'acquisition des données des tags RFID attachés aux produits stockés.
 
-Interface SPI — Bus haute vitesse (jusqu'à 10 Mbit/s), réduisant la latence lors de la lecture des identifiants.
-Compatibilité de tension — Fonctionnement natif en 3,3 V, compatible directement avec le STM32.
-Découplage local (C13, C14 — 1 µF) — Placés au plus près du circuit RFID pour pallier les appels de courant générés par l'antenne lors de l'émission du champ magnétique RF.
+- Interface SPI : Exploitation du bus à haute vitesse (jusqu’à 10 Mbit/s), réduisant la
+latence lors de la lecture des identifiants.
+- Compatibilité de tension : Fonctionnant sous 3.3 V, le composant fonctione directement
+avec le STM32.
+- Découplage local (C13,C14 - 1 μF) : Placés au plus près du circuit RFID pour pallier les
+appels de courant violents générés par l’antenne lors de l’émission du champ magnétique
+RF.
+
+
+
+
+
 
 
 ### 2.5 Bloc Connecteur SWD
+<img width="500" height="391" alt="image" src="https://github.com/user-attachments/assets/5746ba05-d575-4bd6-9858-1699a89f63e5" />
+
 Ce bloc offre un accès direct aux broches de débogage via une sonde externe de type ST-Link, pour le flashage et le débogage à chaud du microcontrôleur.
 
 ### 2.6 Boutons et signaux utilisateur
-SignalComposantRôle fonctionnelCondensateurValeurUSR_BTN_1/2SW2, SW3 (Push)Interaction — Scan / Validation manuelleC12, C13100 nFBOOT_DSW5 (Push)Raccordement BOOT0 à 1——NRSTSW4 (Push)Réinitialisation matérielle (Reset)C1510 nF
+
+
+<img width="606" height="547" alt="image" src="https://github.com/user-attachments/assets/37c3baa9-7c05-40d9-a0b3-a22adbeae8fd" />
+
+
+<img width="724" height="90" alt="image" src="https://github.com/user-attachments/assets/fbd93d9d-eef4-4d98-9e75-a6cbb7b068f7" />
+
 
 ### 2.7 Trous de fixation (Mounting Pads)
-Les quatre perçages H1 à H4 (MountingHole_Pad) garantissent la rigidité de l'intégration au sein d'un boîtier personnalisé.
+
+<img width="607" height="379" alt="image" src="https://github.com/user-attachments/assets/17e7d572-a427-4f82-a37f-08e2043f30c1" />
+
+Les quatre perçages H1 à H4 (MountingHole_Pad) garantissent la rigidité de l’intégration au sein d’un boîtier personnalisé.
 
 ## 3. Routage
-Le passage du schéma théorique au tracé des pistes physiques impose le respect de contraintes géométriques et électromagnétiques strictes.
-Placement des blocs
-Le STM32L476RGTx (LQFP64) occupe une position centrale, permettant une distribution homogène des pistes vers les différents périphériques et minimisant la longueur moyenne des connexions.
-BlocPlacementJustificationConnecteur USB-C + Protection ESDBord de carteLes décharges ESD sont dérivées à la masse avant de pénétrer dans le circuitConnecteur RFIDPériphérie supérieureConnecteur femelle barrette pour liaison stable avec le module MFRC522Connecteur SWD (J2)Côté droitAccès aisé à la sonde ST-Link sans gêner le port USBMounting Pads4 angles symétriquesPassage des vis sans risque de court-circuit
+Le passage du schéma théorique du [PCB](./PCB) permettant le tracé des pistes physiques impose le respect de contraintes géométriques et électromagnétiques strictes.
+
+ 
+
+<img width="616" height="575" alt="image" src="https://github.com/user-attachments/assets/a53242b7-c758-4e9f-b950-08e325036e92" />
+
+### 3.1 Réalisation Matérielle et Placements des blocs
+
+La conception du circuit imprimé a abouti à une modélisation tridimensionnelle permettant de valider l’intégration mécanique des composants, l’accessibilité des connecteurs.
+
+Le microcontrôleur STM32L476RGTx (boîtier LQFP64) occupe une position parfaitement centrale. Cette disposition permet une distribution homogène des pistes de signaux vers les différents périphériques, minimisant ainsi la longueur moyenne des pistes.
+
+- Implantation des diffférents blocs :
+  - Connecteur USB-C et Protection ESD : Placés au plus près du bord de la carte. L’alignement direct du circuit de protection TVS en entrée du connecteur garantit que les décharges électrostatiques sont immédiatement dérivées vers la masse avant de pouvoir se propager vers l’intérieur du circuit.
+  - Connecteur d’extension RFID : Disposé sur la périphérie supérieure sous forme d’un connecteur femelle barrette, offrant une liaison mécanique et électrique stable pour le module MFRC522 tout en évitant les superpositions de composants.
+  - Connecteur SWD (J2) : Isolé à droite afin de permettre un raccordement aisé de la sonde ST-Link lors des phases de flashage sans gêner l’accès au port USB principal.
+  - Mounting Pads : la présence de quatre trous de fixation métallisés (Mounting Pads) répartis de manière symétrique aux quatre angles de la carte valide l’aptitude du prototype à être intégré de manière rigide au sein d’un boîtier de protection. L’espacement laissé libre autour de ces trous garantit le passage des têtes de vis sans risque d’écrasement ou de court-circuit sur les pistes environnantes.
 
 ## 4. Configuration des pins
+<img width="611" height="877" alt="image" src="https://github.com/user-attachments/assets/d9d7188c-23e8-41e3-bce7-823d32ae9f4e" />
+
 Le microcontrôleur STM32L476RGTx (LQFP64) est configuré avec les affectations suivantes :
 
-Port A — SPI1 (NSS, SCK, MISO, MOSI), USB (DM, DP), VCP (TX, RX)
-Port B — RFID IRQ, boutons utilisateur (BTN_1, BTN_2), SWD, LEDs utilisateur
-Port C — OSC, LEDs, RFID RST
-Signaux de contrôle — NRST, BOOT0
+<img width="544" height="449" alt="image" src="https://github.com/user-attachments/assets/1269685d-3aa4-4d53-9e83-b443684b7623" />
 
 
-##5. Software
+- Port A — SPI1 (NSS, SCK, MISO, MOSI), USB (DM, DP), VCP (TX, RX)
+- Port B — RFID IRQ, boutons utilisateur (BTN_1, BTN_2), SWD, LEDs utilisateur
+- Port C — OSC, LEDs, RFID RST
+- Signaux de contrôle — NRST, BOOT0
+
+
+## 5. Software
 ### 5.1 Firmware
 (Section en cours de rédaction)
-5.2 Interface Python
-Une application Python assure l'interface entre l'utilisateur et la carte SOS. Elle s'appuie sur trois bibliothèques principales :
-BibliothèqueRôleserialGestion de la liaison série — ouverture et écoute du port COM virtuel (VCP) créé via USB-CtkinterFramework IHM — génération de la fenêtre, boutons de contrôle, mise à jour dynamique des labelspandasManipulation de données — chargement et recherche indexée dans le fichier Excel d'inventaire
+
+### 5.2 Interface Python
+Pour assurer l’interface entre l’utilisateur et la carte électronique SOS, une application logicielle a été développée en Python qui était une condition nécéssaire dans notre projet. 
+L’application s’appuie sur trois bibliothèques clés, assurant chacune un rôle pilier dans le traitement des données :
+Le script Python s’appuie sur trois bibliothèques principales pour articuler ses différentes tâches. Elles sont structurées de la manière suivante :
+
+- serial :
+  - Rôle : Gestion de la couche de liaison série.
+  - Utilité : Permet l’ouverture, la configuration et l’écoute du port COM virtuel (VCP) créé par le branchement USB-C du STM32. C’est elle qui intercepte le flux binaire.
+    
+- tkinter :
+  - Rôle : Framework de construction d’Interface Homme-Machine (IHM).
+  - Utilité : Bibliothèque standard de Python permettant de générer la fenêtre principale de l’application SOS, de positionner les boutons de contrôle et de mettre à jour dynamiquement les étiquettes de texte lors d’un scan.
+
+- pandas :
+  - Rôle : Manipulation et analyse de structures de données.
+  - Utilité : Charge en mémoire le fichier tableur Excel faisant office de base de données d’inventaire de l’ENSEA. Elle permet d’effectuer des recherches indexées ultrarapides à partir d’un emplacement donné pour en extraire le MPN et le SKU.
+
+
+Dans notre progremme Python, on retrouve les fonctions suivantes : 
+- init_interface :
+  - Entrée : Aucune (void)
+  - Rôle : Initialise et configure les composants graphiques de la fenêtre principale.
+  - Sortie : NoneType : None
+- serial_connection(port, baudrate) :
+  - Entrée : str : port, int : baudrate (ex : 115200)
+  - Rôle : Ouvre le canal de communication série USB-C avec le STM32.
+  - Sortie : serial.Serial ou None : ser (instance de connexion)
+- read(ser) :
+  - Entrée : bytes : data
+  - Rôle : Convertit les octets bruts reçus en chaîne de caractères utilisable.
+  - Sortie : list : location
+- search_info(location) :
+  - Entrée : list : location
+  - Rôle : Requête de recherche au sein du fichier Excel d’inventaire.
+  - Sortie : int : mpn, int : sku
+- display_info(mpn, sku, location) :
+  - Entrée : int : mpn, int : sku, list : location
+  - Rôle : Met à jour dynamiquement l’interface graphique.
+  - Sortie : NoneType : None
+
+## 6. Question environnementale
+
+A l'issue de notre projet nous avons finalement choisis la question : Votre projet recherche-t-il la rentabilité dans une perspective de viabilité financière ?
+
+A cette question, nous y repondons *oui* et ce pour plusieurs raisons :
+- **Gain de temps et d'organisation** : le système SOS permet aux techniciens de localiser instantanément les composants, réduisant les pertes de temps liées à la recherche manuelle en tiroir.
+- **Économie d'argent important** : avec une actualisation automatique du système, nous pouvons éviter de recommander des composants déjà présents au sein de l'école.
+- **Facilité de commande** : grâce au suivi précis des stocks (quantité, SKU, MPN), les réapprovisionnements sont déclenchés au bon moment, évitant les ruptures comme les sur-stocks inutiles.
+- **"Le temps c'est de l'argent"** : chaque minute gagnée en gestion de stock est une minute réinvestie dans des tâches à plus forte valeur ajoutée.
+
+En ce sens, le projet SOS s'inscrit pleinement dans une logique de rentabilité opérationnelle et de viabilité financière à long terme.
+
+## Conslusion
+Le projet SOS (Stock Organizer Scan) est, à ce stade, un projet en cours de développementoù où l'on a malheuresement pas pu y venir à bout. Cependant, nous avons pu faire une belle avancée : une carte électronique sur mesure intégrant un microcontrôleur STM32L4 et un lecteur RFID, couplée à une interface logicielle en Python, constitue une solution cohérente et pensée pour répondre à un besoin concret au sein de l'ENSEA.
+
+Même inachevé, le projet démontre une réelle utilité : automatiser le suivi des composants électroniques, réduire les erreurs de gestion de stock et faciliter les commandes sont des apports directs pour les techniciens et les étudiants qui utilisent les tiroclasses au quotidien.
+
+Ce projet nous a également permis de monter en compétences sur des technologies variées : conception PCB, communication SPI, développement logiciel et gestion de projet en équipe. Il constitue une base que d'autres promotions pourraient reprendre et faire évoluer vers un système pleinement opérationnel.
+
+   

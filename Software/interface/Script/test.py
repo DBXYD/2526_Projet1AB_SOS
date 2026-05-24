@@ -10,16 +10,22 @@ tableau_equiv= [["NaN","Patricia", "D265"] , ["NaN", "Tiro-clas"]]
 def simu_scan(room, f, drawer,column, raw):
     return bytes([room,f,drawer,column,raw])
 
-
 def scan():
-    ser = serial.Serial('/dev/ttyUSB0', 9600)
-    # reads everything after waiting for data to be sent
-    while not ser.in_waiting:
-        time.sleep(0.5)
-    data = ser.read_all()
-    # closing connection
-    ser.close()
-    return data
+    try :    
+        ser = serial.Serial('/dev/ttyUSB0', 9600)
+        label_warning = ttk.Label(mainframe, text="¨Port USB connected",font=("Helvetica", 5))
+        label_warning.grid(column=2, row=30)
+        # reads everything after waiting for data to be sent
+        while not ser.in_waiting:
+            time.sleep(0.5)
+        data = ser.read_all()
+        # closing connection
+        ser.close()
+        return data
+    except serial.serialutil.SerialException:
+        label_warning = ttk.Label(mainframe, text="Warning : Port USB not connected",font=("Helvetica", 15))
+        label_warning.grid(column=2, row=30)
+        
 
 
 def decode(data):
@@ -50,14 +56,16 @@ def search_info(loc):
 
 
 def display_info(mpn, sku, loc):
-    # texte_mpn = tk.StringVar(value="MPN ")
-    # texte_loc = tk.StringVar(value="Emplacement ")
-    # texte_sku = tk.StringVar(value="SKU")
-    texte_loc.set(f"Emplacement : Salle {loc[0]} Furniture {loc[1]} Tiroir {loc[2]} Colonne {loc[3]} Ligne {loc[4]}")
+
+    texte_loc.set(f"Emplacement : Room {loc[0]} Furniture {loc[1]} Drawer {loc[2]} Column {loc[3]} Row {loc[4]}")
     texte_mpn.set(f"MPN : {mpn}")
     texte_sku.set(f"SKU : {sku}")
 
 
+    
+    
+
+'''
 def loc_a_ecrire():
     # demande quelle loc ecrire ds tag et la renvoie en bytes
     my_label= tk.Label(root, text="Enter Location in order room furniture drawer, column, row with spaces", font=("Helvetica", 15))
@@ -87,53 +95,23 @@ def loc_a_ecrire():
         loc_list[i]= int(loc_list[i])
     global loc_bytes
     loc_bytes= bytes(loc_list)
+'''
 
-
-def assign_tag():
+def assign_tag(loc_bytes):
     # change ID tag pour loc en parametres
     # type bytes
     # attention timeout port
-    ser = serial.Serial('/dev/ttyUSB0', 9600)
-    nb_bytes= ser.write(loc_bytes)
-    ser.close()
-    ttk.Label(mainframe, text="Sent {nb_bytes} bytes." ,).grid(column=1, row=70)
-
-
-#texte_loc.set(f"Emplacement : Salle {nonassigne('Room',0)} {nonassigne('Furniture',0)} Tiroir {nonassigne('Drawer',2)} Colonne {nonassigne('Column',3)} Ligne {nonassigne('Raw',4)}")
-
-'''def init_interface():
-    root = tk.Tk()
+    try:
+        ser = serial.Serial('/dev/ttyUSB0', 9600)
+        ser.close()
+        verif_label = tk.Label(root, text="Location sent" , font=("Helvetica", 15))
+        verif_label.grid(column=1, row=35)
+    except serial.serialutil.SerialException:
+        label_warning = ttk.Label(mainframe, text="Warning : Port USB not connected",font=("Helvetica", 15))
+        label_warning.grid(column=2, row=30)
+        
     
-    root.title("Gestion des inventaires")
     
-    root.state('zoomed')
-    mainframe = tk.ttk.Frame(root, padding=(3, 3, 100, 100))
-    mainframe.grid(column=0, row=3, sticky=(tk.N, tk.W, tk.E, tk.S))
-    
-
-    texte_mpn = tk.StringVar(value="MPN ")
-    texte_loc = tk.StringVar(value="Emplacement ")
-    texte_sku = tk.StringVar(value="SKU")
-    
-    label_mpn = ttk.Label(mainframe, textvariable=texte_mpn)
-    label_mpn.grid(column=1, row=2)
-    
-    label_loc = ttk.Label(mainframe, textvariable=texte_loc)
-    label_loc.grid(column=2, row=2)
-    
-    label_sku = ttk.Label(mainframe, textvariable=texte_sku)
-    label_sku.grid(column=3, row=2)
-    
-    root.columnconfigure(0, weight=1)
-    root.rowconfigure(0, weight=1)
-    mainframe.columnconfigure(2, weight=1)
-
-    # location = decode(data)
-    location = test("D265","Tiro-clas",2,9,1)
-    mpn, sku = search_info(location)    
-    display_info(mpn,sku,location)
-
-    root.mainloop()'''
 
 root = tk.Tk()
     
@@ -142,11 +120,12 @@ root.title("Gestion des inventaires")
 root.state(newstate='icon')
 mainframe = ttk.Frame(root, padding=(3, 3, 100, 100))
 mainframe.grid(column=0, row=0, sticky=(tk.N, tk.W, tk.E, tk.S))
- 
+
 texte_mpn = tk.StringVar(value="MPN ")
 texte_loc = tk.StringVar(value="Emplacement ")
-
 texte_sku = tk.StringVar(value="SKU")
+
+
 label_mpn = ttk.Label(mainframe, textvariable=texte_mpn)
 label_mpn.grid(column=1, row=10)
     
@@ -165,17 +144,57 @@ mainframe.columnconfigure(2, weight=1)
 
 
 print("begin")
-def start():
+
+    
+def read_data():
+        
+    scan()
     data= simu_scan(2,1,2,9,1)
     loc_str= decode(data)
     mpn, sku= search_info(loc_str)
     display_info(mpn, sku, loc_str)
     root.update()
-    button= ttk.Button(mainframe, text="Click to assign ID to tag", command=loc_a_ecrire)
-    button.grid(column=1, row=80)
-    root.update()
-    assign_tag()
+    
 
-start_button = tk.Button(root, text="Start scanning", command=start)
-start_button.grid(column=1, row=50)
+def write_loc():
+    global loc_bytes
+    def display_value():
+        loc = my_entry.get()
+        loc_list = loc.rsplit(" ")
+            
+        if len(loc_list) != 5:
+            error_label= tk.Label(root, text="Invalid Location", font=("Helvetica", 18))
+            error_label.grid(column=1, row=70)
+        try :
+            
+            loc_list[0] = tableau_equiv[0].index(loc_list[0])
+            loc_list[1] = tableau_equiv[1].index(loc_list[1])
+            for i in range(2, 5):
+                loc_list[i] = int(loc_list[i])
+            loc_bytes = bytes(loc_list)
+            root.update()
+            assign_tag(loc_bytes)
+            print("done")
+        except ValueError :
+            error_label= tk.Label(root, text="Invalid Location", font=("Helvetica", 18))
+            error_label.grid(column=1, row=70)            
+    
+    my_label = tk.Label(root, text="Enter Location in order room furniture drawer, column, row with spaces", font=("Helvetica", 15))
+    my_label.grid(column=1, row=40)
+    my_label = tk.Label(root, text="Ex : D265 Tiro-clas 2 9 1", font=("Helvetica", 10))
+    my_label.grid(column=1, row=45)
+    
+    my_entry = tk.Entry(root, width=20, font=("Helvetica", 18))
+    my_entry.grid(column=1, row=50)
+    button_done= tk.Button(root, text="Done", command= display_value)
+    button_done.grid(column=1, row=60)
+
+read_button = tk.Button(root, text="Search components' informations", command=read_data)
+
+write_button = ttk.Button(root, text="Click to assign ID to tag", command=write_loc)
+
+
+read_button.grid(column=1, row=20)
+write_button.grid(column=1, row=30)
+
 root.mainloop()

@@ -14,7 +14,7 @@ Chaque boîte de rangement se voit attribuer un tag RFID unique. Le dispositif S
 - Le MPN (Manufacturer Part Number) : référence exacte du constructeur
 - SKU (Stock Keeping Unit) : code interne d'identification du stock
 - LocalisationSalle précise au sein des différents tiroclasses de l'ENSEA
-- Quantité exact d'exemplaires restants
+- Quantité exacte d'exemplaires restants
 
 
 ### 1.3 Solution mise en œuvre
@@ -194,27 +194,39 @@ Le script Python s’appuie sur trois bibliothèques principales pour articuler 
 
 
 Dans notre progremme Python, on retrouve les fonctions suivantes : 
-- init_interface :
-  - Entrée : Aucune (void)
-  - Rôle : Initialise et configure les composants graphiques de la fenêtre principale.
-  - Sortie : NoneType : None
-- serial_connection(port, baudrate) :
-  - Entrée : str : port, int : baudrate (ex : 115200)
+- scan() :
+  - Entrée : void
   - Rôle : Ouvre le canal de communication série USB-C avec le STM32.
   - Sortie : serial.Serial ou None : ser (instance de connexion)
-- read(ser) :
+- decode(data) :
   - Entrée : bytes : data
-  - Rôle : Convertit les octets bruts reçus en chaîne de caractères utilisable.
-  - Sortie : list : location
+  - Rôle : Convertit les données en hexadécimal reçues en une listee de caractères utilisable.
+  -Sortie : list[str,str,int,int,int] : location
 - search_info(location) :
   - Entrée : list : location
-  - Rôle : Requête de recherche au sein du fichier Excel d’inventaire.
+  - Rôle : Requête de recherche au sein du fichier d’inventaire Excel 
   - Sortie : int : mpn, int : sku
 - display_info(mpn, sku, location) :
   - Entrée : int : mpn, int : sku, list : location
   - Rôle : Met à jour dynamiquement l’interface graphique.
   - Sortie : NoneType : None
-
+- read_data():
+  - Entrée : void
+  - Rôle : Suite à l'appui sur le bouton read, appelle les fonction scan, decode, search_info et display_info pour afficher SKU, MPN et localisation sur l'interface
+  - Sortie : Nonetype : None
+- write_loc():
+  - Entrée : void
+  - Rôle : demande à l'utilisateur la localisation à attribuer à la puce scannée 
+  - Sortie : Nonetype : None
+- display_value():
+  - Entrée : void
+  - Rôle : Suite à l'appui sur le bouton "done" (lorque l'utilisateur a entré la localisation et a terminé), convertit cette localisation en identifiant (locbytes) puis appelle la fonction assign_tag(loc_bytes)
+  - Sortie : Nonetype : None
+- assign_tag(loc_bytes):
+  - Entrée : bytes loc_bytes
+  - Rôle : Ouvre le canal de communication série USB-C avec le STM32 et envoie à la STM32 l'identifiant à attribuer à la puce.
+  - Sortie : Nonetype : None
+  
 ## 6. Question environnementale
 
 A l'issue de notre projet nous avons finalement choisis la question : Votre projet recherche-t-il la rentabilité dans une perspective de viabilité financière ?
@@ -228,7 +240,7 @@ A cette question, nous y repondons *oui* et ce pour plusieurs raisons :
 En ce sens, le projet SOS s'inscrit pleinement dans une logique de rentabilité opérationnelle et de viabilité financière à long terme.
 
 ## Conslusion
-Le projet SOS (Stock Organizer Scan) est, à ce stade, un projet en cours de développementoù où l'on a malheuresement pas pu y venir à bout. Cependant, nous avons pu faire une belle avancée : une carte électronique sur mesure intégrant un microcontrôleur STM32L4 et un lecteur RFID, couplée à une interface logicielle en Python, constitue une solution cohérente et pensée pour répondre à un besoin concret au sein de l'ENSEA.
+Le projet SOS (Stock Organizer Scan) est, à ce stade, un projet en cours de développement dont on a malheuresement pas pu venir à bout. Cependant, nous avons pu faire une belle avancée : une carte électronique sur mesure intégrant un microcontrôleur STM32L4 et un lecteur RFID, couplée à une interface logicielle en Python, constitue une solution cohérente et pensée pour répondre à un besoin concret au sein de l'ENSEA.
 
 Même inachevé, le projet démontre une réelle utilité : automatiser le suivi des composants électroniques, réduire les erreurs de gestion de stock et faciliter les commandes sont des apports directs pour les techniciens et les étudiants qui utilisent les tiroclasses au quotidien.
 

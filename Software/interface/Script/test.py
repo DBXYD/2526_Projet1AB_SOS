@@ -4,29 +4,30 @@ import pandas as pd
 import serial
 import time
 
-tableau_equiv= [["NaN","Patricia", "D265"] , ["NaN", "Tiro-clas"]]
 
-
-def simu_scan(room, f, drawer,column, raw):
-    return bytes([room,f,drawer,column,raw])
 
 def scan():
     try :    
         ser = serial.Serial('/dev/ttyUSB0', 9600)
         label_warning = ttk.Label(mainframe, text="¨Port USB connected",font=("Helvetica", 5))
         label_warning.grid(column=2, row=30)
-        # reads everything after waiting for data to be sent
+        # attend que toutes les informations soient lues pour les envoyées
         while not ser.in_waiting:
             time.sleep(0.5)
         data = ser.read_all()
-        # closing connection
+        # ferme la connexion 
         ser.close()
         return data
     except serial.serialutil.SerialException:
         label_warning = ttk.Label(mainframe, text="Warning : Port USB not connected",font=("Helvetica", 15))
         label_warning.grid(column=2, row=30)
-        
 
+        
+def simu_scan(room, f, drawer,column, raw):
+    # Fonction pourr tester le code sans connexion USB  
+    return bytes([room,f,drawer,column,raw])
+
+tableau_equiv= [["NaN","Patricia", "D265"] , ["NaN", "Tiro-clas"]]
 
 def decode(data):
     # entree: bytes
@@ -147,7 +148,6 @@ print("begin")
 
     
 def read_data():
-        
     scan()
     data= simu_scan(2,1,2,9,1)
     loc_str= decode(data)

@@ -34,7 +34,7 @@ void test(){
 }
 
 void read(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata, int size){
-	// lit tag hrfid, mets size Bytes ds pdata buffer et envoie au PC via USB huart
+	// lit tag hrfid, met size Bytes ds pdata buffer et envoie au PC via USB huart
 	RFID_receive(hrfid, pdata, size); // recupere donnees stockees sur le tag
 	HAL_UART_Transmit(huart, pdata, size, 500); // envoi via USART (USB)
 }

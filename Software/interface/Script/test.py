@@ -32,7 +32,7 @@ tableau_equiv= [["NaN","Patricia", "D265"] , ["NaN", "Tiro-clas"]]
 def decode(data):
     # entree: bytes
     # supp 1B salle et meuble; 1B tiroir; 1B col et ligne
-    # returns list of string: location as text
+    # returns list
     data_hex= data.hex()
     loc= [0]*5
     loc[0]= tableau_equiv[0][ int( data_hex[:2], 16) ]
@@ -148,8 +148,8 @@ print("begin")
 
     
 def read_data():
-    scan()
-    data= simu_scan(2,1,2,9,1)
+    #data = scan()
+    data= simu_scan(2,1,2,9,1) #exemple de localisation test
     loc_str= decode(data)
     mpn, sku= search_info(loc_str)
     display_info(mpn, sku, loc_str)

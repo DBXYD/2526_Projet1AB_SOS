@@ -18,17 +18,17 @@ void test(){
 	log[1]= 0x05;
 	log[4]= 0x07;
 	
-	// lecture tag, affichage de l'addresse de data
+	// lecture tag, affichage de l'adresse de data
 	read(&huart1, &hrfid1, data, size);
 	printf("Received data at Ox%x.\r\n", data);
-	// ecriture de log sur le tag, affichage de l'addresse du tableau log (pour verifier si modifie)
+	// ecriture de log sur le tag, affichage de l'adresse du tableau log (pour verifier si modifie)
 	write(&huart1, &hrfid1, log, sizeLog);
 	printf("Wrote data at Ox%x.\r\n", log);
 	
 	// lecture du tag pour observer les modifications post-ecriture
 	uint8_t readData[size];
 	read(&huart1, &hrfid1, readData, size);
-	// affichage addresse buffer readData et du premier hexa d'1 octet sur 2 en memoire depuis cette addresse
+	// affichage adresse buffer readData et du premier hexa d'1 octet sur 2 en memoire depuis cette adresse
 	printf("Read 'written' data stored at Ox%x.\r\n", readData);
 	printf("%u, %u, %u, %u\r\n", readData[0], readData[4], readData[8], readData[12]);
 }
@@ -45,8 +45,10 @@ void write(UART_HandleTypeDef* huart, RFID_HandleTypeDef* hrfid, uint8_t* pdata,
 	RFID_transmit(hrfid, pdata, size); // enregistre pdata sur le tag 
 }
 
-uint8_t SPI1_WriteRead(uint8_t data,SPI_HandleTypeDef hspi1) {
+uint8_t SPI1_WriteRead(uint8_t data, SPI_HandleTypeDef hspi1) {
+    // ecrit data puis lit (en renvoie avec stock) les donnees sur le tag
+    // n'inclut pas la liaison USART
     uint8_t stock;
-    HAL_SPI_TransmitReceive(&hspi1, &data, &stock, 1, HAL_MAX_DELAY);
+    RFID_transmit_receive(&hspi1, &data, &stock, 1, HAL_MAX_DELAY);
     return stock;
 }

@@ -173,7 +173,23 @@ Le microcontrôleur STM32L476RGTx (LQFP64) est configuré avec les affectations 
 
 ## 5. Software
 ### 5.1 Firmware
-(Section en cours de rédaction)
+La liaison entre le PC et le tag RFID à travers le PCB est gérée par du code en C, où on retrouve une séparation par composants. Le projet est construit de manière à pouvoir réutiliser des morceaux du code pour d’autres projets faisant intervenir des composants de celui-ci.\
+Par la suite on détaillera seulement les fichiers contenant des fonctions écrites par nous, et non des fichiers générés par STM32CubeIDE lors de l'affectation des pins sur le .ioc (gpio, spi, usart,...).\
+
+Dans le main.c se trouvent des appels aux fonctions d'initialisation et une boucle infinie où l'appel à test() de algo.c permet de tester des fonctionnalités en mode debuggeur.\
+\
+Le fichier rfid.c contient des fonctions ayant trait à la liaison SPI entre la STM32 et le lecteur RFID, et une structure permettant de définir les broches associées à un lecteur RFID. Cette dernière est initialisée grâce à la fonction RFID_init(hrfid, hspi, hspi_nss_port, hspi_nss_pin, rst_port, rst_pin). 
+
+- void RFID_transmit(RFID_HandleTypeDef* hrfid, uint8_t* data, int size) transmet les données de data au tag et les y écrit;
+- void RFID_receive(RFID_HandleTypeDef* hrfid, uint8_t* data, int size) lit les données du tag et les envoie au master en les stockant dans un buffer data.
+- void RFID_transmit_receive(RFID_HandleTypeDef* hrfid, uint8_t* pTxData, uint8_t* pRxData, int size) fait les deux, l’un après l’autre.
+
+
+Le fichier algo.c contient des fonctions rassemblant celles des autres fichiers, mettant ainsi bout à bout les différents éléments du PCB. Les fonctions read et write font alors intervenir le lecteur RFID et la liaison USART avec le PC. 
+
+- void test() est utile pour la phase développement: elle aide à vérifier le fonctionnement de read(huart, hrfid, pdata, size) et write(huart, hrfid, pdata, size). On commence par lire le tag RFID, puis on y enregistre des données qu’on cherche enfin à retrouver en refaisant appel à read. 
+
+- uint8_t SPI1_WriteRead(uint8_t data, SPI_HandleTypeDef hspi1) fait appel à RRFID_transmit_receive(hrfid, pTxData, pRxData, size). Elle est particulièrement utile dans les cas où ces deux actions doivent être effectuées l’une après l’autre. RFID_transmit_receive gère le délai de transmission. 
 
 ### 5.2 Interface Python
 Pour assurer l’interface entre l’utilisateur et la carte électronique SOS, une application logicielle a été développée en Python qui était une condition nécéssaire dans notre projet. 

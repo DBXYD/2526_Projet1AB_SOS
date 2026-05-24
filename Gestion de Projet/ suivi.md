@@ -48,3 +48,9 @@ Présentation du routage\
 Avancement des diapositives\
 Avancement sur les codes\
 Commande du PCB
+
+## Séance 9: Jeudi 21/05
+Dernière séance:\
+Finalisation code interface\
+Démonstration recherche composant et assignation nouveau tag\
+Présentation du projet.

@@ -39,7 +39,8 @@ void RFID_receive(RFID_HandleTypeDef* hrfid, uint8_t* data, int size){
 }
 
 void RFID_transmit_receive(RFID_HandleTypeDef* hrfid, uint8_t* pTxData, uint8_t* pRxData, int size){
-	HAL_GPIO_WritePin(hrfid->hspi_nss_port, hrfid->hspi_nss_pin, RESET);
+	// ecrit TxData puis lit et met dans RxData les donnees du tag
+	HAL_GPIO_WritePin(hrfid->hspi_nss_port, hrfid->hspi_nss_pin, RESET); // active communication
 	HAL_SPI_TransmitReceive(hrfid->hspi, pTxData, pRxData, size, 100);
-	HAL_GPIO_WritePin(hrfid->hspi_nss_port, hrfid->hspi_nss_pin, SET);
+	HAL_GPIO_WritePin(hrfid->hspi_nss_port, hrfid->hspi_nss_pin, SET); // desactive communication
 }
